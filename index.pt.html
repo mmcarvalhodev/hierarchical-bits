@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en"><head>
+<html lang="pt-BR"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hierarchical Bits</title>
+<title>Bits Hierárquicos</title>
 <style>
 :root { --accent: #2e7d32; --ink: #1b1f23; --muted: #57606a;
         --line: #e1e4e8; --bg: #fff; --code-bg: #f6f8fa; }
@@ -62,19 +62,19 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
         font-size: 13px; font-weight: 600; margin-bottom: 18px; }
 </style>
 </head><body>
-<div class="nav"><div class="in"><a href="index.html" class="brand">Hierarchical Bits</a><a href="index.html" class="active">Home</a><a href="master.html" class="">Study</a><a href="pitch.html" class="">Pitch</a><a href="visual.html" class="">Visual Pitch</a><a class="lang" href="index.pt.html" title="Switch language">PT</a><a class="gh" href="https://github.com/mmcarvalhodev/bits-hierarquicos">GitHub ↗</a></div></div>
+<div class="nav"><div class="in"><a href="index.pt.html" class="brand">Bits Hierárquicos</a><a href="index.pt.html" class="active">Início</a><a href="master.pt.html" class="">Estudo</a><a href="pitch.pt.html" class="">Pitch</a><a href="visual.pt.html" class="">Pitch Visual</a><a class="lang" href="index.html" title="Switch language">EN</a><a class="gh" href="https://github.com/mmcarvalhodev/bits-hierarquicos">GitHub ↗</a></div></div>
 <main>
 <div class="hero">
-  <div class="pill">Measured study · usable prototype · open source</div>
-  <div class="lead">A <b>structural envelope</b>: it represents a heterogeneous asset, navigates parts of it without loading everything, and delegates each region to the best specialist format.</div>
-  <p class="sub">Most formats force you to pick <i>one</i>: compact (but to see one piece, decode all of it) or navigable (but structure bolted on top, across several systems). BH is compact <b>and</b> navigable, in a single file.</p>
+  <div class="pill">Estudo medido · protótipo usável · código aberto</div>
+  <div class="lead">Um <b>envelope estrutural</b>: representa um ativo heterogêneo, navega por partes dele sem carregar tudo, e delega cada região ao melhor formato especialista.</div>
+  <p class="sub">A maioria dos formatos te obriga a escolher <i>um</i>: compacto (mas para ver um pedaço, decodifica tudo) ou navegável (mas é estrutura colada por cima, em vários sistemas). O BH é compacto <b>e</b> navegável, num arquivo só.</p>
 </div>
-<h2 style="border:0">The core capability — not a benchmark</h2>
-<p>The heart of BH is not "being smaller". It's <b>reading only the part you need</b>. The <code>bhmem</code> prototype (agent memory) measures it in real bytes:</p>
-<table><thead><tr><th>reading</th><th>bytes read</th><th>vs flat store (reads all)</th></tr></thead>
-<tbody><tr><td><code>summary()</code> — digest of all topics</td><td>2.5%</td><td><b>36× less</b></td></tr><tr><td><code>recall(topic)</code> — one branch</td><td>4.0%</td><td><b>22× less</b></td></tr><tr><td><code>since(t)</code> — time window</td><td>9.8%</td><td><b>9× less</b></td></tr><tr><td><code>provenance(id)</code> — source of 1 memory</td><td>10.8%</td><td><b>8× less</b></td></tr></tbody></table>
-<div class="cards"><a class="card" href="master.html"><div class="t">The Study (Master) →</div><div class="d">9 angles tested, declared method, honest baselines, public self-corrections, Related Work. Zenodo-ready.</div></a><a class="card" href="pitch.html"><div class="t">Pitch — Presentation →</div><div class="d">7 slides. Leads with the core capability: read only what you need.</div></a><a class="card" href="visual.html"><div class="t">Pitch — Visual →</div><div class="d">4 comparative charts + the evidence panel (with the baseline labeled).</div></a><a class="card" href="https://github.com/mmcarvalhodev/bits-hierarquicos"><div class="t">Code on GitHub →</div><div class="d">The bhmem prototype (agent memory as .bh), the terrains tested, and how to reproduce everything.</div></a></div>
-<blockquote>The value isn't in the compressed block. It's in the structure that knows what that block means.</blockquote>
+<h2 style="border:0">A capacidade central — não um benchmark</h2>
+<p>O coração do BH não é "ser menor". É <b>ler só a parte que você precisa</b>. O protótipo <code>bhmem</code> (memória de agente) mede isso em bytes reais:</p>
+<table><thead><tr><th>leitura</th><th>bytes lidos</th><th>vs store plano (lê tudo)</th></tr></thead>
+<tbody><tr><td><code>summary()</code> — resumo de todos os tópicos</td><td>2,5%</td><td><b>36× menos</b></td></tr><tr><td><code>recall(tópico)</code> — um ramo</td><td>4,0%</td><td><b>22× menos</b></td></tr><tr><td><code>since(t)</code> — janela temporal</td><td>9,8%</td><td><b>9× menos</b></td></tr><tr><td><code>provenance(id)</code> — fonte de 1 memória</td><td>10,8%</td><td><b>8× menos</b></td></tr></tbody></table>
+<div class="cards"><a class="card" href="master.pt.html"><div class="t">O Estudo (Master) →</div><div class="d">9 ângulos testados, método declarado, baselines honestos, autocorreções públicas, Related Work. Pronto para Zenodo.</div></a><a class="card" href="pitch.pt.html"><div class="t">Pitch — Apresentação →</div><div class="d">7 slides. Lidera com a capacidade central: ler só o que precisa.</div></a><a class="card" href="visual.pt.html"><div class="t">Pitch — Visual →</div><div class="d">4 gráficos comparativos + o painel de evidências (com baseline rotulado).</div></a><a class="card" href="https://github.com/mmcarvalhodev/bits-hierarquicos"><div class="t">Código no GitHub →</div><div class="d">O protótipo bhmem (memória de agente em .bh), os terrenos testados, e como reproduzir tudo.</div></a></div>
+<blockquote>O valor não está no bloco comprimido. Está na estrutura que sabe o que aquele bloco significa.</blockquote>
 </main>
-<div class="foot">Hierarchical Bits · © 2025–2026 Márcio M. Carvalho · code under Apache-2.0, docs under CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/bits-hierarquicos">repository</a></div>
+<div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho · código sob Apache-2.0, documentos sob CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/bits-hierarquicos">repositório</a></div>
 </body></html>

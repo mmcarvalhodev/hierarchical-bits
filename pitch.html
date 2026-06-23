@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head>
+<html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BH — Pitch</title>
@@ -15,10 +15,12 @@ body { margin: 0; color: var(--ink); background: var(--bg);
        backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
 .nav .in { max-width: 860px; margin: 0 auto; padding: 12px 24px; display: flex;
            gap: 18px; align-items: center; flex-wrap: wrap; }
-.nav a { color: var(--muted); text-decoration: none; font-size: 14px;
-         font-weight: 500; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
 .nav a:hover, .nav a.active { color: var(--accent); }
 .nav .brand { color: var(--ink); font-weight: 700; margin-right: auto; }
+.nav .lang { border: 1px solid var(--accent); color: var(--accent);
+             padding: 3px 11px; border-radius: 6px; font-weight: 700; }
+.nav .lang:hover { background: var(--accent); color: #fff; }
 .nav .gh { border: 1px solid var(--line); padding: 4px 12px; border-radius: 6px; }
 main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
 h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; margin: 1.6em 0 .6em; }
@@ -26,9 +28,8 @@ h1 { font-size: 2em; margin-top: .2em; }
 h2 { font-size: 1.5em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
 h3 { font-size: 1.2em; }
 a { color: var(--accent); }
-p, li { color: var(--ink); }
 blockquote { margin: 1em 0; padding: .4em 1.1em; border-left: 4px solid var(--accent);
-             background: #f3f8f4; color: #24433; border-radius: 0 6px 6px 0; }
+             background: #f3f8f4; border-radius: 0 6px 6px 0; }
 blockquote p { margin: .4em 0; }
 code { background: var(--code-bg); padding: .15em .4em; border-radius: 5px;
        font: .88em/1.5 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
@@ -45,15 +46,13 @@ img { max-width: 100%; height: auto; border: 1px solid var(--line);
 hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
 .foot { max-width: 860px; margin: 0 auto; padding: 24px; color: var(--muted);
         font-size: 13px; border-top: 1px solid var(--line); }
-/* landing */
 .hero { padding: 56px 0 8px; }
 .hero .lead { font-size: 1.5em; font-weight: 600; line-height: 1.4; }
 .hero .sub { color: var(--muted); font-size: 1.05em; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
          gap: 16px; margin: 28px 0; }
 .card { border: 1px solid var(--line); border-radius: 10px; padding: 20px;
-        text-decoration: none; color: var(--ink); transition: .15s;
-        display: block; }
+        text-decoration: none; color: var(--ink); transition: .15s; display: block; }
 .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.06);
               transform: translateY(-2px); }
 .card .t { font-weight: 700; font-size: 1.1em; color: var(--accent); }
@@ -63,123 +62,121 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
         font-size: 13px; font-weight: 600; margin-bottom: 18px; }
 </style>
 </head><body>
-<div class="nav"><div class="in"><a href="index.html" class="brand">Bits Hierárquicos</a><a href="index.html" class="">Início</a><a href="master.html" class="">Estudo</a><a href="pitch.html" class="active">Pitch</a><a href="visual.html" class="">Pitch Visual</a><a class="gh" href="https://github.com/mmcarvalhodev/bits-hierarquicos">GitHub ↗</a></div></div>
-<main><h1 id="bits-hierarquicos-pitch-de-apresentacao">Bits Hierárquicos — Pitch de Apresentação</h1>
+<div class="nav"><div class="in"><a href="index.html" class="brand">Hierarchical Bits</a><a href="index.html" class="">Home</a><a href="master.html" class="">Study</a><a href="pitch.html" class="active">Pitch</a><a href="visual.html" class="">Visual Pitch</a><a class="lang" href="pitch.pt.html" title="Switch language">PT</a><a class="gh" href="https://github.com/mmcarvalhodev/bits-hierarquicos">GitHub ↗</a></div></div>
+<main><h1 id="hierarchical-bits-presentation-pitch">Hierarchical Bits — Presentation Pitch</h1>
 <blockquote>
-<p><strong>Em uma frase:</strong> é uma estrutura que permite representar um ativo
-heterogêneo, navegar por partes dele sem carregar tudo, e delegar cada
-região ao melhor formato especialista.</p>
+<p><strong>In one sentence:</strong> a structure that lets you represent a heterogeneous
+asset, navigate parts of it without loading everything, and delegate each
+region to the best specialist format.</p>
 </blockquote>
 <hr>
-<h2 id="slide-1-o-problema">SLIDE 1 — O problema</h2>
-<p>Todo dado hoje te obriga a escolher <strong>um</strong>:</p>
+<h2 id="slide-1-the-problem">SLIDE 1 — The problem</h2>
+<p>Every data format today forces you to pick <strong>one</strong>:</p>
 <ul>
-<li><strong>Compacto</strong> (JPEG/WebP/AVIF) → mas para ver um pedaço, decodifica tudo.</li>
-<li><strong>Navegável</strong> (índices, OLAP, vector DB) → mas é estrutura colada por cima,
-  em vários sistemas que precisam ser sincronizados.</li>
+<li><strong>Compact</strong> (JPEG/WebP/AVIF) → but to see one piece, you decode all of it.</li>
+<li><strong>Navigable</strong> (indexes, OLAP, vector DB) → but it's structure bolted on top,
+  across several systems that must be kept in sync.</li>
 </ul>
-<p>O dado nasce cru, e o resto do stack gasta tempo, espaço e complexidade
-<strong>redescobrindo a estrutura dele</strong> — índices, agregados, previews, caches,
-provas, metadados. Tudo espalhado em sistemas separados.</p>
+<p>Data is born raw, and the rest of the stack spends time, space and complexity
+<strong>rediscovering its structure</strong> — indexes, aggregates, previews, caches, proofs,
+metadata. All scattered across separate systems.</p>
 <hr>
-<h2 id="slide-2-a-ideia-nao-e-um-codec-nem-um-banco">SLIDE 2 — A ideia (não é um codec, nem um banco)</h2>
-<p><strong>Bits Hierárquicos (BH)</strong> é um <strong>envelope estrutural</strong>: o dado nasce com a
-sua própria estrutura. Em vez de comprimir tudo numa base só, o BH:</p>
-<pre><code>1. torna a estrutura EXPLÍCITA   — hierarquia, pertencimento, regras (custo: 0–6%)
-2. ROTEIA cada região            — foto→WebP, gradiente→fórmula, texto→PNG
-3. permite MÚLTIPLAS leituras    — preview / região / agregado / prova
+<h2 id="slide-2-the-idea-not-a-codec-nor-a-database">SLIDE 2 — The idea (not a codec, nor a database)</h2>
+<p><strong>Hierarchical Bits (BH)</strong> is a <strong>structural envelope</strong>: data is born carrying
+its own structure. Instead of compressing everything onto a single basis, BH:</p>
+<pre><code>1. makes structure EXPLICIT   — hierarchy, belonging, rules (cost: 0–6%)
+2. ROUTES each region          — photo→WebP, gradient→formula, text→PNG
+3. allows MULTIPLE readings    — preview / region / aggregate / proof
 </code></pre>
 <blockquote>
-<p>Não substitui codecs. <strong>Orquestra</strong> codecs por região, dentro de uma
-estrutura que sabe o que cada região significa.</p>
+<p>It doesn't replace codecs. It <strong>orchestrates</strong> codecs per region, inside a
+structure that knows what each region means.</p>
 </blockquote>
 <hr>
-<h2 id="slide-3-a-capacidade-central">SLIDE 3 — A capacidade central</h2>
-<p>O coração do BH não é "ser menor". É <strong>ler só a parte que você precisa, sem
-decodificar o resto</strong> — uma capacidade que nenhum formato compacto tem. O
-tamanho é consequência, não a promessa.</p>
+<h2 id="slide-3-the-core-capability">SLIDE 3 — The core capability</h2>
+<p>The heart of BH is not "being smaller". It's <strong>reading only the part you need,
+without decoding the rest</strong> — a capability no compact format has. Size is a
+consequence, not the promise.</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>resultado</th>
+<th>result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Acessar uma região</strong></td>
-<td><strong>3–55× menos bytes</strong> que o WebP (que decodifica o arquivo TODO para qualquer pedaço)</td>
+<td><strong>Access one region</strong></td>
+<td><strong>3–55× fewer bytes</strong> than WebP (which decodes the WHOLE file for any piece)</td>
 </tr>
 <tr>
-<td>...e ainda menor</td>
-<td>2,1× menor que o WebP, no mesmo arquivo</td>
+<td>...and still smaller</td>
+<td>2.1× smaller than WebP, in the same file</td>
 </tr>
 <tr>
-<td>Custo de tornar a estrutura explícita</td>
-<td>apenas 0–6% do arquivo</td>
+<td>Cost of making structure explicit</td>
+<td>only 0–6% of the file</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Capacidade, não benchmark.</strong> "Leio só o ramo que preciso" é uma propriedade
-do formato — não depende de qual documento, de qual dataset, de qual condição.
-É isso que sobrevive ao engenheiro cético. Compacto <strong>E</strong> navegável, num
-arquivo só — hoje isso exige quatro ferramentas.</p>
+<p><strong>Capability, not benchmark.</strong> "I read only the branch I need" is a property
+of the format — it doesn't depend on which document, which dataset, which
+condition. That's what survives the skeptical engineer. Compact <strong>and</strong>
+navigable, in a single file — today that takes four tools.</p>
 </blockquote>
 <hr>
-<h2 id="slide-4-por-que-e-diferente">SLIDE 4 — Por que é diferente</h2>
-<p>O BH converge para algo que mistura, sem ser nenhum deles:</p>
-<pre><code>PDF    → orquestração de especialistas
-Merkle → hierarquia verificável
-OLAP   → leitura seletiva
-AST    → estrutura explícita
+<h2 id="slide-4-why-its-different">SLIDE 4 — Why it's different</h2>
+<p>BH converges to something that mixes, without being any of them:</p>
+<pre><code>PDF    → orchestration of specialists
+Merkle → verifiable hierarchy
+OLAP   → selective reading
+AST    → explicit structure
 </code></pre>
-<p>Ninguém vende <strong>representação + leitura + pertencimento + hierarquia +
-múltiplas visões</strong> como uma estrutura única. <strong>Esse é o pedaço novo.</strong></p>
+<p>Nobody sells <strong>representation + reading + belonging + hierarchy + multiple
+views</strong> as a single structure. <strong>That's the new piece.</strong></p>
 <hr>
-<h2 id="slide-5-onde-ganha-honesto">SLIDE 5 — Onde ganha (honesto)</h2>
-<pre><code>GANHA   dado ESTRUTURA-DOMINANTE: documentos, diagramas, UIs, mapas, dados em
-        camadas, saídas estruturadas de IA, conhecimento simbólico.
-        No limite (dado gerado por regra): o payload vira o PROGRAMA que o
-        gera — 800× a 3.600× menor.
-DELEGA  sinal denso (foto, áudio, embedding) → WebP/AVIF/HNSW reinam, e o BH
-        os CONVOCA. Não compete onde não deve.
+<h2 id="slide-5-where-it-wins-honest">SLIDE 5 — Where it wins (honest)</h2>
+<pre><code>WINS       STRUCTURE-DOMINANT data: documents, diagrams, UIs, maps, layered
+           data, structured AI outputs, symbolic knowledge.
+           At the limit (rule-generated data): the payload becomes the PROGRAM
+           that generates it — 800× to 3,600× smaller.
+DELEGATES  dense signal (photo, audio, embedding) → WebP/AVIF/HNSW reign, and BH
+           CALLS them. It doesn't compete where it shouldn't.
 </code></pre>
-<p>A fronteira não é a entropia — é o <strong>reconhecimento da estrutura</strong>.</p>
+<p>The boundary is not entropy — it's <strong>structure recognition</strong>.</p>
 <hr>
-<h2 id="slide-6-onde-alguem-diria-isso-e-diferente">SLIDE 6 — Onde alguém diria "isso é diferente"</h2>
-<pre><code>MEMÓRIA DE AGENTES
-   hoje: documentos + embeddings + resumos + cache + índices + metadados,
-         tudo espalhado.
-   .bh:  um único envelope navegável.
+<h2 id="slide-6-where-someone-would-say-this-is-different">SLIDE 6 — Where someone would say "this is different"</h2>
+<pre><code>AGENT MEMORY
+   today: documents + embeddings + summaries + cache + indexes + metadata,
+          all scattered.
+   .bh:   a single navigable envelope.
 
 KNOWLEDGE SYSTEMS (Notion/Obsidian/Roam/Logseq)
-   hoje: estruturam informação, mas a estrutura NÃO é parte do formato.
-   .bh:  a estrutura É o formato.
+   today: they structure information, but the structure is NOT part of the format.
+   .bh:   the structure IS the format.
 
-ATIVOS COMPOSTOS DE IA
-   imagem + máscara + profundidade + prompt + versão + metadados.
-   hoje: um Frankenstein de sistemas. .bh: nativo.
+COMPOSITE AI ASSETS
+   image + mask + depth + prompt + version + metadata.
+   today: a Frankenstein of systems. .bh: native.
 </code></pre>
 <hr>
-<h2 id="slide-7-o-estado-e-o-pedido">SLIDE 7 — O estado e o pedido</h2>
+<h2 id="slide-7-the-state-and-the-ask">SLIDE 7 — The state and the ask</h2>
 <ul>
-<li><strong>Validado por medição</strong>, não por slide: 9 ângulos testados, 128+ testes
-  verdes, correção como portão, baselines honestos, autocorreções públicas.</li>
-<li><strong>A construção começou:</strong> <code>bhmem</code> — um <code>.bh</code> usável para <strong>memória de
-  agente</strong> (biblioteca + testes). O agente lê o resumo / um tópico / uma janela
-  / a proveniência sem carregar a memória inteira: <strong>36× / 22× / 9× / 8× menos
-  bytes</strong> que um store plano. A tese virou ferramenta.</li>
-<li><strong>Ainda não é um produto</strong> — é uma arquitetura medida com o primeiro artefato
-  executável. O próximo passo é ligar o <code>bhmem</code> a um loop de agente real e
-  somar a face de proveniência verificável (Merkle sobre os blocos).</li>
+<li><strong>Validated by measurement</strong>, not by slide: 9 angles tested, 128+ green
+  tests, correctness as a gate, honest baselines, public self-corrections.</li>
+<li><strong>Construction has begun:</strong> <code>bhmem</code> — a usable <code>.bh</code> for <strong>agent memory</strong>
+  (library + tests). The agent reads the summary / a topic / a window / the
+  provenance without loading the whole memory: <strong>36× / 22× / 9× / 8× fewer
+  bytes</strong> than a flat store. The thesis became a tool.</li>
+<li><strong>Not a finished product yet</strong> — it's a measured architecture with the first
+  executable artifact. The next step is to wire <code>bhmem</code> into a real agent loop
+  and add the verifiable-provenance face (Merkle over the blocks).</li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>O valor não está no bloco comprimido. Está na estrutura que sabe o que
-aquele bloco significa.</strong></p>
+<p><strong>The value isn't in the compressed block. It's in the structure that knows
+what that block means.</strong></p>
 </blockquote></main>
-<div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho ·
-código sob Apache-2.0, documentos sob CC BY 4.0 ·
-<a href="https://github.com/mmcarvalhodev/bits-hierarquicos">repositório</a></div>
+<div class="foot">Hierarchical Bits · © 2025–2026 Márcio M. Carvalho · code under Apache-2.0, docs under CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/bits-hierarquicos">repository</a></div>
 </body></html>
