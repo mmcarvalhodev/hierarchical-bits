@@ -1,0 +1,22 @@
+{
+  "title": "Hierarchical Bits: A Structural Envelope for Orchestrating Representations — Method, Measurements and Boundaries",
+  "description": "<p>Hierarchical Bits (BH) is a data-format paradigm investigated as a <em>structural envelope</em> rather than a codec. This technical note tests the hypothesis (\"the byte is an implicit tree; hierarchy is interpretation\") across nine independent angles — image codec, database aggregation, Merkle verification, co-registered layers (wafer/video), GPU data movement, multimodal AI storage, symbolic/compositional density, decode-as-program, and orchestration — each with declared falsifiable claims, exact correctness as a gate, and honest baselines distinguishing gains vs naive from gains vs state of the art.</p><p>Central finding: BH does not compress dense signal better than JPEG/WebP/AVIF (it loses — measured), but as a structural envelope it (a) makes structure explicit at 0–6% cost, (b) routes each region's residual to the right specialist, and (c) offers multiple reads over one structure. Anchor result: a structured document is 2.1× smaller than WebP and readable per-region in 3–55× fewer bytes, within one file. A usable prototype (bhmem, agent memory) accompanies the study. The transversal law: BH pays off to the extent the data is structure, not signal; the boundary is structure recognition, not entropy.</p>",
+  "creators": [
+    {
+      "name": "Carvalho, Márcio M.",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "keywords": [
+    "hierarchical data",
+    "structural envelope",
+    "codec orchestration",
+    "selective reading",
+    "agent memory",
+    "data formats"
+  ],
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "access_right": "open",
+  "license": "cc-by-4.0"
+}

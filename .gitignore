@@ -17,6 +17,7 @@ env/
 *.sqlite
 embeddings/cache.db
 **/agent_memory.*
+_print_master.html
 
 # Saídas de imagem geradas (os PNGs do pitch são versionados; descomentar p/ ignorar)
 # pitch_assets/*.png

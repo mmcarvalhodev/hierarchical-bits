@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use Hierarchical Bits, please cite the technical note below."
+title: "Hierarchical Bits: A Structural Envelope for Orchestrating Representations — Method, Measurements and Boundaries"
+abstract: "A data-format paradigm investigated as a structural envelope rather than a codec: it makes structure explicit at low cost, routes each region's residual to the right specialist, and offers multiple reads over one structure. Tested across nine independent angles with declared claims, correctness as a gate, and honest baselines."
+type: software
+authors:
+  - family-names: "Carvalho"
+    given-names: "Márcio M."
+version: "1.0.0"
+date-released: "2026-06-23"
+license: CC-BY-4.0
+repository-code: "https://github.com/mmcarvalhodev/hierarchical-bits"
+url: "https://mmcarvalhodev.github.io/hierarchical-bits/"
+keywords:
+  - hierarchical data
+  - structural envelope
+  - codec orchestration
+  - selective reading
+  - agent memory
+  - data formats
+# After the first Zenodo release, add the version DOI here (and/or the concept DOI):
+# doi: "10.5281/zenodo.XXXXXXX"
