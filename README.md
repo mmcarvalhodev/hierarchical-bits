@@ -31,7 +31,7 @@ without decoding the rest** — a property of the format, not of a dataset.
 
 | reading | bytes read | vs flat store (reads all) |
 |---|---|---|
-| `summary()` — digest of all topics | 2.5% | **36× less** |
+| `summary()` — digest of all topics | 2.5% | **35× less** |
 | `recall(topic)` — one branch | 4.0% | **22× less** |
 | `since(t)` — time window | 9.8% | **9× less** |
 | `provenance(id)` — source of 1 memory | 10.8% | **8× less** |

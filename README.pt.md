@@ -30,7 +30,7 @@ proveniência **sem carregar a memória inteira** (medido em bytes reais lidos):
 
 | leitura | bytes lidos | vs store plano (lê tudo) |
 |---|---|---|
-| `summary()` — resumo de todos os tópicos | 2,5% | **36× menos** |
+| `summary()` — resumo de todos os tópicos | 2,5% | **35× menos** |
 | `recall(tópico)` — um ramo | 4,0% | **22× menos** |
 | `since(t)` — janela temporal | 9,8% | **9× menos** |
 | `provenance(id)` — fonte de 1 memória | 10,8% | **8× menos** |

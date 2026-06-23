@@ -111,7 +111,7 @@ ATIVOS COMPOSTOS DE IA
   verdes, correção como portão, baselines honestos, autocorreções públicas.
 - **A construção começou:** `bhmem` — um `.bh` usável para **memória de
   agente** (biblioteca + testes). O agente lê o resumo / um tópico / uma janela
-  / a proveniência sem carregar a memória inteira: **36× / 22× / 9× / 8× menos
+  / a proveniência sem carregar a memória inteira: **35× / 22× / 9× / 8× menos
   bytes** que um store plano. A tese virou ferramenta.
 - **Ainda não é um produto** — é uma arquitetura medida com o primeiro artefato
   executável. O próximo passo é ligar o `bhmem` a um loop de agente real e

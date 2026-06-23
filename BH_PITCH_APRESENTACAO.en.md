@@ -111,7 +111,7 @@ COMPOSITE AI ASSETS
   tests, correctness as a gate, honest baselines, public self-corrections.
 - **Construction has begun:** `bhmem` — a usable `.bh` for **agent memory**
   (library + tests). The agent reads the summary / a topic / a window / the
-  provenance without loading the whole memory: **36× / 22× / 9× / 8× fewer
+  provenance without loading the whole memory: **35× / 22× / 9× / 8× fewer
   bytes** than a flat store. The thesis became a tool.
 - **Not a finished product yet** — it's a measured architecture with the first
   executable artifact. The next step is to wire `bhmem` into a real agent loop

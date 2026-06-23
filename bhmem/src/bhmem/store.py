@@ -1,28 +1,28 @@
-"""bhmem — memória de agente como envelope .bh navegável.
+"""bhmem — agent memory as a navigable .bh envelope.
 
-A tese do BH aplicada à memória de um agente: em vez de espalhar a memória
-por documentos + embeddings + resumos + cache + índices (sistemas separados
-que precisam ser sincronizados), grava-se UM envelope hierárquico onde a
-ESTRUTURA é parte do formato.
+The BH thesis applied to an agent's memory: instead of scattering memory across
+documents + embeddings + summaries + cache + indexes (separate systems that
+must be kept in sync), you write ONE hierarchical envelope where the STRUCTURE
+is part of the format.
 
-O valor não é "ser menor". É **ler só a parte que você precisa**:
+The value is not "being smaller". It's **reading only the part you need**:
 
-    summary()        lê só o índice (resumos por tópico)      — barato
-    recall(topic)    salta para UM ramo e lê só ele           — barato
-    since(t)         lê só os ramos que tocam a janela        — barato
-    provenance(id)   lê só o bloco que contém a memória       — barato
-    full()           lê tudo                                   — a linha de base
+    summary()        reads only the index (per-topic summaries)   — cheap
+    recall(topic)    jumps to ONE branch and reads only it        — cheap
+    since(t)         reads only the branches touching the window  — cheap
+    provenance(id)   reads only the block holding the memory      — cheap
+    full()           reads everything                              — the baseline
 
-Cada leitura reporta os bytes que REALMENTE leu do arquivo (seeks reais),
-para que o ganho seja medido, não alegado. A linha de base honesta é o store
-plano (JSON/JSONL) que carrega o arquivo inteiro para qualquer consulta.
+Every reading reports the bytes it ACTUALLY read from the file (real seeks), so
+the gain is measured, not claimed. The honest baseline is the flat store
+(JSON/JSONL) that loads the whole file for any query.
 
-Escopo honesto (a fronteira do BH, igual ao resto do estudo):
-  - O `.bh` ganha em acesso ESTRUTURAL: por tópico (pertencimento), por tempo,
-    por proveniência. É leitura seletiva sobre hierarquia explícita.
-  - Recall semântico DENSO (vetorial) NÃO é feito aqui — delega-se a um índice
-    vetorial (HNSW), que o envelope pode referenciar. O BH convoca o
-    especialista; não compete com ele. Ver README.
+Honest scope (the BH boundary, same as the rest of the study):
+  - .bh wins on STRUCTURAL access: by topic (belonging), by time, by
+    provenance. Selective reading over an explicit hierarchy.
+  - DENSE semantic (vector) recall is NOT done here — it delegates to a vector
+    index (HNSW) that the envelope can reference. BH calls the specialist; it
+    does not compete with it. See README.
 """
 from __future__ import annotations
 
@@ -37,19 +37,19 @@ _U32 = struct.Struct("<I")
 
 @dataclass
 class Memory:
-    """Uma memória estruturada do agente."""
+    """One structured agent memory."""
 
     id: str
-    ts: float  # tempo unix (segundos)
+    ts: float  # unix time (seconds)
     kind: str  # fact | event | relation | observation
-    topic: str  # pertencimento — o ramo da hierarquia
+    topic: str  # belonging — the branch of the hierarchy
     text: str
-    source: str = ""  # proveniência (de onde veio: ferramenta, url, turno...)
+    source: str = ""  # provenance (where it came from: tool, url, turn...)
     meta: dict = field(default_factory=dict)
 
 
 def _topic_summary(topic: str, mems: list[Memory]) -> dict:
-    """Resumo de um tópico — o que `summary()` lê sem tocar nos blocos."""
+    """Summary of a topic — what `summary()` reads without touching the blocks."""
     ordered = sorted(mems, key=lambda m: m.ts)
     kinds: dict[str, int] = {}
     for m in mems:
@@ -66,23 +66,23 @@ def _topic_summary(topic: str, mems: list[Memory]) -> dict:
 
 
 class MemoryStore:
-    """Acumula memórias e as serializa como envelope .bh.
+    """Accumulates memories and serializes them as a .bh envelope.
 
-    Layout do arquivo (posição codifica a hierarquia — sem campo HIERARQUIA):
+    File layout (position encodes the hierarchy — there is no HIERARCHY field):
 
         MAGIC(4)
         header_len(4)  + header_json    {n_topics, n_mem}
         table_len(4)   + table_json     [{topic, n, kinds, tmin, tmax,
                                           latest, offset, size}, ...]
-        idindex_len(4) + idindex_json   {id -> topic}   (só `provenance` lê)
-        bloco_tópico_0                  json([memória, ...])
-        bloco_tópico_1
+        idindex_len(4) + idindex_json   {id -> topic}   (only `provenance` reads it)
+        topic_block_0                   json([memory, ...])
+        topic_block_1
         ...
 
-    O header + a tabela são o ÍNDICE DE ESTRUTURA: pequenos, lidos sempre por
-    summary/recall/since. O id_index é uma região SEPARADA — só `provenance`
-    a carrega, para que o resumo não pague pelo mapa de ids. Os blocos ficam
-    no fim e são lidos por seek, só quando a consulta os pede.
+    The header + table are the STRUCTURE INDEX: small, always read by
+    summary/recall/since. The id_index is a SEPARATE region — only `provenance`
+    loads it, so the summary does not pay for the id map. The blocks live at the
+    end and are read by seek, only when a query asks for them.
     """
 
     def __init__(self) -> None:
@@ -106,7 +106,7 @@ class MemoryStore:
             topic: json.dumps([asdict(m) for m in mems], ensure_ascii=False).encode("utf-8")
             for topic, mems in groups.items()
         }
-        # offsets relativos ao início da região de blocos
+        # offsets relative to the start of the blocks region
         table = []
         offset = 0
         for topic, mems in groups.items():
@@ -139,7 +139,7 @@ class MemoryStore:
 
 @dataclass
 class ReadStats:
-    """Quanto uma leitura realmente custou — medido, não alegado."""
+    """How much a reading actually cost — measured, not claimed."""
 
     bytes_read: int
     blocks_read: int
@@ -151,10 +151,10 @@ class ReadStats:
 
 
 class MemoryReader:
-    """Abre um .bh e serve as múltiplas leituras com seeks reais.
+    """Opens a .bh and serves the multiple readings with real seeks.
 
-    Ao abrir, lê só o índice (MAGIC + header + tabela). Os blocos são lidos
-    sob demanda — é isso que torna `recall`/`since`/`provenance` baratos.
+    On open it reads only the index (MAGIC + header + table). Blocks are read on
+    demand — that is what makes `recall`/`since`/`provenance` cheap.
     """
 
     def __init__(self, path: str | os.PathLike) -> None:
@@ -162,21 +162,21 @@ class MemoryReader:
         self.file_size = os.path.getsize(self.path)
         with open(self.path, "rb") as f:
             if f.read(4) != MAGIC:
-                raise ValueError("não é um arquivo .bh (bhmem)")
+                raise ValueError("not a .bh file (bhmem)")
             (hlen,) = _U32.unpack(f.read(4))
             self.header = json.loads(f.read(hlen))
             (tlen,) = _U32.unpack(f.read(4))
             self.table = json.loads(f.read(tlen))
-            # região do id_index: localizada, mas NÃO lida (lazy)
+            # id_index region: located, but NOT read (lazy)
             (self._idindex_len,) = _U32.unpack(f.read(4))
             self._idindex_start = f.tell()
             self._blocks_start = self._idindex_start + self._idindex_len
-        # bytes pagos por summary/recall/since (índice de estrutura só)
+        # bytes paid by summary/recall/since (structure index only)
         self._index_bytes = 4 + 4 + hlen + 4 + tlen + 4
         self._by_topic = {e["topic"]: e for e in self.table}
-        self._id_index: dict[str, str] | None = None  # carregado sob demanda
+        self._id_index: dict[str, str] | None = None  # loaded on demand
 
-    # ---- leitura 1: o resumo (só o índice) -------------------------------
+    # ---- reading 1: the summary (index only) -----------------------------
     def summary(self) -> tuple[list[dict], ReadStats]:
         view = [
             {k: e[k] for k in ("topic", "n", "kinds", "tmin", "tmax", "latest")}
@@ -184,7 +184,7 @@ class MemoryReader:
         ]
         return view, ReadStats(self._index_bytes, 0, self.file_size)
 
-    # ---- leitura 2: um ramo (um tópico) ----------------------------------
+    # ---- reading 2: one branch (one topic) -------------------------------
     def recall(self, topic: str) -> tuple[list[dict], ReadStats]:
         entry = self._by_topic.get(topic)
         if entry is None:
@@ -194,7 +194,7 @@ class MemoryReader:
             self._index_bytes + entry["size"], 1, self.file_size
         )
 
-    # ---- leitura 3: uma janela temporal ----------------------------------
+    # ---- reading 3: a time window ----------------------------------------
     def since(self, t: float) -> tuple[list[dict], ReadStats]:
         out: list[dict] = []
         read = self._index_bytes
@@ -202,7 +202,7 @@ class MemoryReader:
         with open(self.path, "rb") as f:
             for entry in self.table:
                 if entry["tmax"] < t:
-                    continue  # ramo inteiro fora da janela — nem lê
+                    continue  # whole branch outside the window — don't even read it
                 f.seek(self._blocks_start + entry["offset"])
                 block = f.read(entry["size"])
                 read += entry["size"]
@@ -211,9 +211,9 @@ class MemoryReader:
         out.sort(key=lambda m: m["ts"])
         return out, ReadStats(read, nblocks, self.file_size)
 
-    # ---- leitura 4: proveniência de uma memória --------------------------
+    # ---- reading 4: provenance of one memory -----------------------------
     def provenance(self, mem_id: str) -> tuple[dict | None, ReadStats]:
-        # custo: índice de estrutura + o id_index (carregado agora) + 1 bloco
+        # cost: structure index + the id_index (loaded now) + 1 block
         self._load_id_index()
         cost = self._index_bytes + self._idindex_len
         topic = self._id_index.get(mem_id)  # type: ignore[union-attr]
@@ -240,7 +240,7 @@ class MemoryReader:
             f.seek(self._idindex_start)
             self._id_index = json.loads(f.read(self._idindex_len))
 
-    # ---- linha de base: ler tudo -----------------------------------------
+    # ---- baseline: read everything ---------------------------------------
     def full(self) -> tuple[list[dict], ReadStats]:
         out: list[dict] = []
         nblocks = 0

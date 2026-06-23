@@ -461,7 +461,7 @@ só a fração que pede, medida em bytes reais lidos do arquivo:
 
 | leitura | o que devolve | bytes lidos | vs store plano (lê tudo) |
 |---|---|---|---|
-| `summary()` | resumo de todos os tópicos | 2,5% | **36× menos** |
+| `summary()` | resumo de todos os tópicos | 2,5% | **35× menos** |
 | `recall(tópico)` | as memórias de um ramo | 4,0% | **22× menos** |
 | `since(t)` | memórias da janela temporal | 9,8% | **9× menos** |
 | `provenance(id)` | fonte+caminho de 1 memória | 10,8% | **8× menos** |

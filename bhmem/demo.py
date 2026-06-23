@@ -1,10 +1,10 @@
-"""Demo do bhmem — a memória de um agente como envelope .bh, medida.
+"""bhmem demo — an agent's memory as a .bh envelope, measured.
 
-Popula uma memória realista (vários tópicos ao longo do tempo), grava como
-.bh, e mostra que cada leitura lê só a fração que precisa — contra a linha
-de base honesta (store plano que carrega tudo para qualquer consulta).
+Populates a realistic memory (many topics over time), writes it as .bh, and
+shows that each reading reads only the fraction it needs — against the honest
+baseline (a flat store that loads everything for any query).
 
-Rodar:  X:/miniconda3/python.exe X:/bitH/bhmem/demo.py
+Run:  X:/miniconda3/python.exe X:/bitH/bhmem/demo.py
 """
 from __future__ import annotations
 
@@ -17,37 +17,37 @@ from bhmem import Memory, MemoryReader, MemoryStore  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
 
-# --- tempo determinístico (sem Date.now — reprodutível) ---
+# --- deterministic time (no Date.now — reproducible) ---
 T0 = 1_700_000_000.0
 HOUR = 3600.0
 DAY = 24 * HOUR
 
 
 def build() -> MemoryStore:
-    """Memória plausível de um agente que roda há ~90 dias.
+    """Plausible memory of an agent that has been running for ~90 days.
 
-    Realista de propósito: dezenas de tópicos (o agente trabalhou em muitas
-    coisas), cada um TEMPORALMENTE LOCALIZADO numa janela de poucos dias (você
-    foca num tópico, depois move) — só alguns poucos seguem "ativos" até hoje.
-    É essa estrutura (muitos ramos + acesso enviesado) que faz a leitura
-    seletiva render, exatamente como a lei do estudo prevê.
+    Realistic on purpose: dozens of topics (the agent worked on many things),
+    each TEMPORALLY LOCALIZED in a window of a few days (you focus on a topic,
+    then move on) — only a few stay "active" up to today. It is this structure
+    (many branches + skewed access) that makes selective reading pay off,
+    exactly as the study's law predicts.
     """
     store = MemoryStore()
     kinds = ["fact", "event", "relation", "observation"]
-    areas = ["projeto", "bug", "infra", "pessoa", "reuniao", "billing",
-             "deploy", "review", "incidente", "spec", "ferramenta", "decisao"]
+    areas = ["project", "bug", "infra", "person", "meeting", "billing",
+             "deploy", "review", "incident", "spec", "tooling", "decision"]
     n = 0
     n_topics = 60
     for ti in range(n_topics):
         area = areas[ti % len(areas)]
         topic = f"{area}_{ti:02d}"
-        # janela do tópico: começa em algum dia, dura 2–6 dias
-        start_day = (ti * 37) % 86  # espalha determinístico em ~86 dias
+        # topic window: starts on some day, lasts 2–6 days
+        start_day = (ti * 37) % 86  # deterministic spread over ~86 days
         span_days = 2 + (ti % 5)
-        # alguns poucos tópicos seguem ativos até "hoje" (dia 90)
+        # a few topics stay active up to "today" (day 90)
         ongoing = ti % 17 == 0
-        # densidade variada: tópicos grandes e pequenos
-        reps = 8 + (ti * 13) % 60  # 8..67 memórias
+        # varied density: large and small topics
+        reps = 8 + (ti * 13) % 60  # 8..67 memories
         for k in range(reps):
             frac = k / max(reps - 1, 1)
             day = (start_day + frac * span_days) if not ongoing else (start_day + frac * (90 - start_day))
@@ -58,9 +58,9 @@ def build() -> MemoryStore:
                 ts=ts,
                 kind=kind,
                 topic=topic,
-                text=f"[{topic}] {kind}: nota {k+1} sobre {area} "
-                     f"— contexto acumulado do agente neste ramo.",
-                source=f"turno#{n} · ferramenta:{'read' if k % 2 else 'bash'}",
+                text=f"[{topic}] {kind}: note {k+1} about {area} "
+                     f"— context the agent accumulated on this branch.",
+                source=f"turn#{n} · tool:{'read' if k % 2 else 'bash'}",
                 meta={"rep": k, "ongoing": ongoing},
             ))
             n += 1
@@ -68,8 +68,8 @@ def build() -> MemoryStore:
 
 
 def flat_baseline_query(path: Path) -> int:
-    """Linha de base honesta: um store plano (JSONL) lê o arquivo INTEIRO
-    para qualquer consulta — sem índice de estrutura, sem seek seletivo."""
+    """Honest baseline: a flat store (JSONL) reads the WHOLE file for any
+    query, because it has no structure to navigate — no selective seek."""
     return path.stat().st_size
 
 
@@ -78,7 +78,7 @@ def main() -> None:
     bh_path = OUT / "agent_memory.bh"
     store.save(bh_path)
 
-    # linha de base plana equivalente (mesmas memórias, JSONL cru)
+    # equivalent flat baseline (same memories, raw JSONL)
     flat_path = OUT / "agent_memory.jsonl"
     with open(flat_path, "w", encoding="utf-8") as f:
         for m in store._mem:  # noqa: SLF001 (demo)
@@ -90,67 +90,67 @@ def main() -> None:
 
     L: list[str] = []
     p = L.append
-    p("# bhmem — memória de agente como .bh (demo medida)\n")
-    p(f"- memórias: **{len(store)}** · tópicos: **{len(reader.table)}**")
-    p(f"- arquivo `.bh`: **{bh_size:,} bytes** · plano JSONL: **{flat_size:,} bytes**\n")
-    p("## Cada leitura lê só o que precisa (bytes REAIS lidos do arquivo)\n")
-    p("A linha de base plana lê o arquivo **inteiro** para qualquer consulta "
-      f"({flat_size:,} B). O `.bh` lê só o ramo pedido.\n")
-    p("| leitura | o que devolve | bytes lidos | % do arquivo | vs plano |")
+    p("# bhmem — agent memory as .bh (measured demo)\n")
+    p(f"- memories: **{len(store)}** · topics: **{len(reader.table)}**")
+    p(f"- `.bh` file: **{bh_size:,} bytes** · flat JSONL: **{flat_size:,} bytes**\n")
+    p("## Each reading reads only what it needs (REAL bytes read from the file)\n")
+    p("The flat baseline reads the **whole** file for any query "
+      f"({flat_size:,} B). The `.bh` reads only the requested branch.\n")
+    p("| reading | what it returns | bytes read | % of file | vs flat |")
     p("|---|---|---|---|---|")
 
     def row(label: str, what: str, stats, n: int) -> None:
         ratio = flat_size / stats.bytes_read if stats.bytes_read else float("inf")
         p(f"| `{label}` | {what} ({n}) | {stats.bytes_read:,} B | "
-          f"{stats.fraction*100:.1f}% | **{ratio:.0f}× menos** |")
+          f"{stats.fraction*100:.1f}% | **{ratio:.0f}× less** |")
 
-    target_topic = reader.table[7]["topic"]  # um tópico qualquer do meio
+    target_topic = reader.table[7]["topic"]  # some middle topic
     sample_id = "m00000"
 
     sm, st = reader.summary()
-    row("summary()", "resumo de todos os tópicos", st, len(sm))
+    row("summary()", "digest of all topics", st, len(sm))
 
     rc, st = reader.recall(target_topic)
-    row(f"recall('{target_topic}')", "as memórias do tópico", st, len(rc))
+    row(f"recall('{target_topic}')", "the topic's memories", st, len(rc))
 
-    recent_t = T0 + 85 * DAY  # últimos ~5 dias dos 90
+    recent_t = T0 + 85 * DAY  # last ~5 of 90 days
     sc, st = reader.since(recent_t)
-    row("since(últ. 5d)", "memórias recentes", st, len(sc))
+    row("since(last 5d)", "recent memories", st, len(sc))
 
     pv, st = reader.provenance(sample_id)
-    row(f"provenance('{sample_id}')", "fonte+caminho de 1 memória", st, 1 if pv else 0)
+    row(f"provenance('{sample_id}')", "source+path of 1 memory", st, 1 if pv else 0)
 
     fl, st = reader.full()
-    row("full()", "tudo (linha de base)", st, len(fl))
+    row("full()", "everything (baseline)", st, len(fl))
 
-    p("\n## O que isto demonstra\n")
-    p("- **Não é mais um número de compressão.** É a CAPACIDADE: o agente lê o "
-      "resumo, um tópico, uma janela ou a proveniência **sem carregar a memória "
-      "inteira**. O custo de cada leitura é proporcional ao que ela pede.")
-    p("- **A estrutura é parte do formato.** Pertencimento (tópico), tempo e "
-      "proveniência são navegáveis no próprio arquivo — não em quatro sistemas "
-      "colados por cima.")
-    p("- **Fronteira honesta.** Recall *semântico denso* (vetorial) não é feito "
-      "aqui — delega-se a um índice HNSW que o envelope referencia. O `.bh` "
-      "convoca o especialista; não compete com ele.")
+    p("\n## What this demonstrates\n")
+    p("- **Not another compression number.** It's the CAPABILITY: the agent reads "
+      "the summary, a topic, a window or the provenance **without loading the whole "
+      "memory**. The cost of each reading is proportional to what it asks for.")
+    p("- **Structure is part of the format.** Belonging (topic), time and "
+      "provenance are navigable in the file itself — not across four systems "
+      "bolted on top.")
+    p("- **Honest boundary.** *Dense semantic* recall (vector) is not done here — "
+      "it delegates to an HNSW index that the envelope references. The `.bh` calls "
+      "the specialist; it does not compete with it.")
 
     out = OUT / "RESULTS_BHMEM_DEMO.md"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
 
     # console (ascii-safe)
-    print(f"memorias={len(store)} topicos={len(reader.table)} "
+    print(f"memories={len(store)} topics={len(reader.table)} "
           f"bh={bh_size}B jsonl={flat_size}B")
     for label, fn in [
         ("summary", lambda: reader.summary()),
         (f"recall({target_topic})", lambda: reader.recall(target_topic)),
-        ("since(ult.5d)", lambda: reader.since(recent_t)),
+        ("since(last5d)", lambda: reader.since(recent_t)),
         (f"provenance({sample_id})", lambda: reader.provenance(sample_id)),
         ("full", lambda: reader.full()),
     ]:
         _, s = fn()
         ratio = flat_size / s.bytes_read if s.bytes_read else 0
-        print(f"  {label:18s} {s.bytes_read:7d} B  {s.fraction*100:5.1f}%  {ratio:5.0f}x menos")
-    print(f"relatorio: {out}")
+        print(f"  {label:18s} {s.bytes_read:7d} B  {s.fraction*100:5.1f}%  {ratio:5.0f}x less")
+    print(f"report: {out}")
 
 
 if __name__ == "__main__":

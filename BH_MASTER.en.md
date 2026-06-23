@@ -461,7 +461,7 @@ only the fraction it asks for, measured in real bytes read from the file:
 
 | read | what it returns | bytes read | vs flat store (reads all) |
 |---|---|---|---|
-| `summary()` | summary of all topics | 2.5% | **36× less** |
+| `summary()` | summary of all topics | 2.5% | **35× less** |
 | `recall(topic)` | the memories of one branch | 4.0% | **22× less** |
 | `since(t)` | memories of the temporal window | 9.8% | **9× less** |
 | `provenance(id)` | source+path of 1 memory | 10.8% | **8× less** |

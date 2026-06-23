@@ -177,7 +177,7 @@ LANDING = {
                   'need</b>. The <code>bhmem</code> prototype (agent memory) measures it in real bytes:'),
         "th": ["reading", "bytes read", "vs flat store (reads all)"],
         "rows": [
-            ("<code>summary()</code> — digest of all topics", "2.5%", "<b>36× less</b>"),
+            ("<code>summary()</code> — digest of all topics", "2.5%", "<b>35× less</b>"),
             ("<code>recall(topic)</code> — one branch", "4.0%", "<b>22× less</b>"),
             ("<code>since(t)</code> — time window", "9.8%", "<b>9× less</b>"),
             ("<code>provenance(id)</code> — source of 1 memory", "10.8%", "<b>8× less</b>"),
@@ -211,7 +211,7 @@ LANDING = {
                   'O protótipo <code>bhmem</code> (memória de agente) mede isso em bytes reais:'),
         "th": ["leitura", "bytes lidos", "vs store plano (lê tudo)"],
         "rows": [
-            ("<code>summary()</code> — resumo de todos os tópicos", "2,5%", "<b>36× menos</b>"),
+            ("<code>summary()</code> — resumo de todos os tópicos", "2,5%", "<b>35× menos</b>"),
             ("<code>recall(tópico)</code> — um ramo", "4,0%", "<b>22× menos</b>"),
             ("<code>since(t)</code> — janela temporal", "9,8%", "<b>9× menos</b>"),
             ("<code>provenance(id)</code> — fonte de 1 memória", "10,8%", "<b>8× menos</b>"),
