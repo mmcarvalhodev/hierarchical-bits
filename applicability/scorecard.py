@@ -122,18 +122,21 @@ def main() -> None:
              "COG+STAC (satellite/GIS), lakeFS/DVC (data lakes), CRAM+tabix (genomics), "
              "MAM (video), Relativity (legal), named graphs (KGs), S-LoRA (checkpoints). "
              "BH earns **credibility by analogy** there, not a novel build.")
-    L.append("2. **Exactly one domain is a clean `BUILD`: CAD/BIM (90).** The research found "
-             "no mainstream tool that stores ONE canonical building substrate once with "
-             "many additive AND rival discipline/version overlays co-registered as "
-             "first-class layers with selective branch/region reads — today federation "
-             "*duplicates* and treats clashes as ad-hoc. That union is the gap.")
-    L.append("3. **The recurring novel slice is the *rival* layer, not the *shared* one.** "
-             "Across annotation, MAM, eDiscovery, genomics and KGs, existing tools store the "
-             "substrate once but treat **conflicting interpretations as noise to adjudicate "
-             "into one ground truth** — not as first-class, queryable, co-registered rival "
-             "layers. That is precisely what `bhanno` models. So BH's genuinely novel "
-             "contribution is **narrower and sharper** than 'a universal format': it is the "
-             "**first-class representation of adversarial interpretations**.")
+    L.append("2. **Among the 20 domains surveyed, CAD/BIM (90) was the only one classified "
+             "`BUILD`.** The research found no mainstream tool that stores ONE canonical "
+             "building substrate once with many additive AND rival discipline/version "
+             "overlays co-registered as first-class layers with selective branch/region "
+             "reads — today federation *duplicates* and treats clashes as ad-hoc. That "
+             "union is the gap. (A claim about this sample, not about every possible domain.)")
+    L.append("3. **The recurring under-served slice is the *rival* layer, not the *shared* "
+             "one.** Across annotation, MAM, eDiscovery, genomics and KGs, existing tools "
+             "store the substrate once but treat **conflicting interpretations as noise to "
+             "adjudicate into one ground truth** — not as first-class, queryable, "
+             "co-registered rival layers. That is precisely what `bhanno` models. So the "
+             "sweep *suggests* BH's principal **still-under-explored** contribution is "
+             "**treating rival interpretations as first-class entities** — narrower and "
+             "sharper than 'a universal format'. Stated as the differential observed so "
+             "far, not a final reduction of what BH can be.")
     L.append("4. **Our four built prototypes all land `ANCHOR`.** They proved the "
              "*generalization* (one envelope, many domains) honestly — but the sweep shows "
              "their economic win is largely already-solved. That is the method working: it "
@@ -142,11 +145,17 @@ def main() -> None:
              "the bottom as `DELEGATE` — the score discriminates dense-signal from "
              "structure-dominant.")
     L.append("\n## Recommendation\n")
-    L.append("The one **measured test worth building** is the genuine greenfield: **CAD/BIM** "
-             "— a `.bh` where the building object-graph is the substrate, with rival "
-             "discipline/version overlays + clash annotations co-registered, selective "
-             "branch reads, and the adjudication face. It is the only domain where BH is "
-             "*not* re-deriving an existing SOTA pattern.")
+    L.append("Two moves, in order. **First, formalize the principle** (see "
+             "`BH_PRINCIPLE.md`): the sweep shifts BH from *a file format* to *a "
+             "representation model* — multiple concurrent, possibly contradictory "
+             "interpretations sharing one immutable substrate and remaining queryable "
+             "without forced adjudication. That definition is what separates BH from the "
+             "`ANCHOR` systems; it is the real contribution this sweep surfaced.")
+    L.append("**Then, if a measured test is wanted**, the natural candidate in this sample "
+             "is **CAD/BIM** — the only domain here classified `BUILD` — a `.bh` where the "
+             "building object-graph is the substrate, with rival discipline/version "
+             "overlays + clash annotations co-registered, selective branch reads, and the "
+             "deferred-adjudication face.")
 
     (OUT / "APPLICABILITY_SCORECARD.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 

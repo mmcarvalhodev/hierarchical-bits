@@ -16,12 +16,14 @@ The BH *shape* (a heavy shared substrate + many co-registered layers + selective
 read) is **everywhere** — but in almost every big-data domain the
 store-once + selective-read pattern is **already mature SOTA** (DICOM, COG/STAC,
 lakeFS, CRAM/tabix, MAM, S-LoRA…), so BH lands as `ANCHOR` (credibility, not
-novelty). The genuinely novel contribution is **narrower and sharper** than "a
-universal format": it is the **first-class representation of *rival* /
-conflicting interpretations** (what existing tools treat as noise to adjudicate)
-— exactly what `bhanno` models. The single clean greenfield `BUILD` is
-**CAD/BIM**, where federation duplicates and no tool unifies substrate-once +
-rival overlays + selective branch reads.
+novelty). The sweep *suggests* the still-under-explored contribution is
+**narrower and sharper** than "a universal format": treating **rival /
+conflicting interpretations as first-class entities** (what existing tools treat
+as noise to adjudicate) — exactly what `bhanno` models. Among the 20 domains
+surveyed, the only one classified `BUILD` was **CAD/BIM**, where federation
+duplicates and no tool unifies substrate-once + rival overlays + selective branch
+reads. See **[`BH_PRINCIPLE.md`](../BH_PRINCIPLE.md)** for the formalization the
+sweep points to.
 
 ```
 Run:  python scorecard.py   ->  APPLICABILITY_SCORECARD.md + applicability_map.png
