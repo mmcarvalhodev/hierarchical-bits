@@ -6,7 +6,7 @@
 **Reference hardware:** NVIDIA GeForce RTX 3060 12 GB · Python 3.13 · NumPy · CuPy/CUDA · Pillow
 **Test coverage:** 128+ automated tests green, exact correctness as a gate before every measurement
 **Nature of this document:** technical demonstration report — every claim is accompanied by the method and the measured number
-**Revision:** v2 (June 2026) — adds three usable prototypes (agent memory, observability, model checkpoints) in §10
+**Repository status:** ahead of the published preprint (Zenodo v1, DOI 10.5281/zenodo.20821058) — §10 adds three usable prototypes (agent memory, observability, model checkpoints) not yet in a published Zenodo version
 
 ---
 
