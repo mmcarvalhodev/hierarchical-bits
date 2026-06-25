@@ -74,118 +74,130 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
 <div class="nav"><div class="in"><a href="index.html" class="brand">Hierarchical Bits</a><a href="index.html" class="">Home</a><a href="master.html" class="">Study</a><a href="pitch.html" class="active">Pitch</a><a href="visual.html" class="">Visual Pitch</a><a class="lang" href="pitch.pt.html" title="Switch language">PT</a><a class="doi" href="https://doi.org/10.5281/zenodo.20821058" title="Zenodo DOI">DOI</a><a class="gh" href="https://github.com/mmcarvalhodev/hierarchical-bits">GitHub ↗</a></div></div>
 <main><h1 id="hierarchical-bits-presentation-pitch">Hierarchical Bits — Presentation Pitch</h1>
 <blockquote>
-<p><strong>In one sentence:</strong> a structure that lets you represent a heterogeneous
-asset, navigate parts of it without loading everything, and delegate each
-region to the best specialist format.</p>
+<p><strong>In one sentence:</strong> a representation model where multiple — possibly
+contradictory — interpretations share one immutable substrate and stay
+queryable, without duplicating the data and without forcing them into a single
+truth.</p>
 </blockquote>
 <hr>
 <h2 id="slide-1-the-problem">SLIDE 1 — The problem</h2>
-<p>Every data format today forces you to pick <strong>one</strong>:</p>
-<ul>
-<li><strong>Compact</strong> (JPEG/WebP/AVIF) → but to see one piece, you decode all of it.</li>
-<li><strong>Navigable</strong> (indexes, OLAP, vector DB) → but it's structure bolted on top,
-  across several systems that must be kept in sync.</li>
-</ul>
-<p>Data is born raw, and the rest of the stack spends time, space and complexity
-<strong>rediscovering its structure</strong> — indexes, aggregates, previews, caches, proofs,
-metadata. All scattered across separate systems.</p>
-<hr>
-<h2 id="slide-2-the-idea-not-a-codec-nor-a-database">SLIDE 2 — The idea (not a codec, nor a database)</h2>
-<p><strong>Hierarchical Bits (BH)</strong> is a <strong>structural envelope</strong>: data is born carrying
-its own structure. Instead of compressing everything onto a single basis, BH:</p>
-<pre><code>1. makes structure EXPLICIT   — hierarchy, belonging, rules (cost: 0–6%)
-2. ROUTES each region          — photo→WebP, gradient→formula, text→PNG
-3. allows MULTIPLE readings    — preview / region / aggregate / proof
-</code></pre>
 <blockquote>
-<p>It doesn't replace codecs. It <strong>orchestrates</strong> codecs per region, inside a
-structure that knows what each region means.</p>
+<p><strong>Don't duplicate the world every time someone disagrees with it.</strong></p>
 </blockquote>
+<p>Start from a common base — one dataset, one building, one document set, one
+conversation history. Over that base, multiple interpretations naturally arise:
+annotators label it, disciplines read it differently, hypotheses compete over it,
+versions accumulate. They <strong>coexist</strong>.</p>
+<p>Today, holding them forces a bad choice:</p>
+<ul>
+<li><strong>copy the base</strong> once per interpretation → K readings cost K copies of the
+  world; or</li>
+<li><strong>merge to one</strong> → a dominant representation wins and the rest is lost.</li>
+</ul>
 <hr>
-<h2 id="slide-3-the-core-capability">SLIDE 3 — The core capability</h2>
-<p>The heart of BH is not "being smaller". It's <strong>reading only the part you need,
-without decoding the rest</strong> — a capability no compact format has. Size is a
-consequence, not the promise.</p>
+<h2 id="slide-2-the-idea-a-model-not-a-file-format">SLIDE 2 — The idea (a model, not a file format)</h2>
+<blockquote>
+<p><strong>BH is a representation model for shared immutable substrates and concurrent
+interpretations.</strong></p>
+</blockquote>
+<p>One substrate, stored once and immutable. Each interpretation is a <strong>first-class,
+co-registered entity</strong> over it. The reader picks the lens at read time —
+adjudication is deferred and optional, never baked in.</p>
+<pre><code>SUBSTRATE   stored once, immutable, shared by every reading
+LAYERS      each interpretation is a first-class, co-registered entity
+READINGS    one lens / the matrix / the majority / the disagreement
+            — your choice, at read time, not baked in
+</code></pre>
+<p>We call this the <strong>First-Class Interpretation Representation (FCIR)</strong> —
+interpretations kept as persistent, addressable, <em>first-class</em> entities over a
+shared substrate, rather than temporary versions or conflicts to be resolved away.</p>
+<hr>
+<h2 id="slide-3-the-distinguishing-test-falsifiable">SLIDE 3 — The distinguishing test (falsifiable)</h2>
+<blockquote>
+<p>Given two interpretations that <strong>disagree</strong> about the same element — can
+<strong>both remain</strong>, neither marked wrong, until a reader chooses (or declines) to
+adjudicate?</p>
+</blockquote>
+<p>Many systems end up <strong>converging to a dominant representation</strong>, or <strong>isolating
+each interpretation into an independent copy/version</strong>. BH keeps them
+co-registered over one substrate and lets adjudication wait. That is the
+differentiator — stated as a test you can run on any system, not a boast.</p>
+<hr>
+<h2 id="slide-4-what-we-are-not-the-honest-positioning">SLIDE 4 — What we are NOT (the honest positioning)</h2>
+<p>We surveyed 20 data domains. The result killed the easy claim that "BH is
+universally new":</p>
+<blockquote>
+<p><strong>Storing the substrate once + reading it selectively is already mature SOTA</strong>
+— DICOM, COG/STAC, lakeFS, CRAM/tabix, S-LoRA, MAM. BH does <strong>not</strong> claim to
+invent that.</p>
+</blockquote>
+<p>The sweep showed that the <strong>First-Class Interpretation Representation (FCIR)</strong> —
+keeping rival readings as preserved entities instead of resolving them away — is
+the aspect where BH most clearly differentiates from current solutions. Saying plainly what
+BH is <em>not</em> is what survives the skeptical engineer.</p>
+<hr>
+<h2 id="slide-5-where-it-fits-and-where-it-doesnt-the-useful-limit">SLIDE 5 — Where it fits, and where it doesn't (the useful limit)</h2>
+<pre><code>FITS     multiple readings of ONE base object:
+         · annotation with annotators who disagree
+         · agent memory with conflicting versions over one history
+         · BIM/CAD — disciplines reading one building (not five copies)
+         · legal / eDiscovery — rival readings of one document set
+         · science — competing hypotheses over the same raw data
+
+DOESN'T  dense signal (photo / audio / embeddings) → delegate to codecs
+         single-truth goals (consensus, gold labels) → already solved
+</code></pre>
+<p>A pitch that states its own limit is the opposite of vapor.</p>
+<hr>
+<h2 id="slide-6-the-evidence-the-principle-is-reproducible">SLIDE 6 — The evidence (the principle is reproducible)</h2>
+<p>The same model showed up — independently — in four completely different domains.
+That <strong>reproducibility</strong> matters more than any single number:</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>result</th>
+<th>instance</th>
+<th>domain</th>
+<th>the same model, instantiated</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Access one region</strong></td>
-<td><strong>3–55× fewer bytes</strong> than WebP (which decodes the WHOLE file for any piece)</td>
+<td><code>bhanno</code></td>
+<td>rival annotations</td>
+<td>the purest: K labelings coexist, adjudication optional</td>
 </tr>
 <tr>
-<td>...and still smaller</td>
-<td>2.1× smaller than WebP, in the same file</td>
+<td><code>bhmem</code></td>
+<td>agent memory</td>
+<td>conflicting versions over one history</td>
 </tr>
 <tr>
-<td>Cost of making structure explicit</td>
-<td>only 0–6% of the file</td>
+<td><code>bhckpt</code></td>
+<td>model checkpoints</td>
+<td>alternative readings of one shared base</td>
+</tr>
+<tr>
+<td><code>bhtrace</code></td>
+<td>traces</td>
+<td>competing lenses over one span tree</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Capability, not benchmark.</strong> "I read only the branch I need" is a property
-of the format — it doesn't depend on which document, which dataset, which
-condition. That's what survives the skeptical engineer. Compact <strong>and</strong>
-navigable, in a single file — today that takes four tools.</p>
-</blockquote>
-<hr>
-<h2 id="slide-4-why-its-different">SLIDE 4 — Why it's different</h2>
-<p>BH converges to something that mixes, without being any of them:</p>
-<pre><code>PDF    → orchestration of specialists
-Merkle → verifiable hierarchy
-OLAP   → selective reading
-AST    → explicit structure
-</code></pre>
-<p>Nobody sells <strong>representation + reading + belonging + hierarchy + multiple
-views</strong> as a single structure. <strong>That's the new piece.</strong></p>
-<hr>
-<h2 id="slide-5-where-it-wins-honest">SLIDE 5 — Where it wins (honest)</h2>
-<pre><code>WINS       STRUCTURE-DOMINANT data: documents, diagrams, UIs, maps, layered
-           data, structured AI outputs, symbolic knowledge.
-           At the limit (rule-generated data): the payload becomes the PROGRAM
-           that generates it — 800× to 3,600× smaller.
-DELEGATES  dense signal (photo, audio, embedding) → WebP/AVIF/HNSW reign, and BH
-           CALLS them. It doesn't compete where it shouldn't.
-</code></pre>
-<p>The boundary is not entropy — it's <strong>structure recognition</strong>.</p>
-<hr>
-<h2 id="slide-6-where-someone-would-say-this-is-different">SLIDE 6 — Where someone would say "this is different"</h2>
-<pre><code>AGENT MEMORY
-   today: documents + embeddings + summaries + cache + indexes + metadata,
-          all scattered.
-   .bh:   a single navigable envelope.
-
-KNOWLEDGE SYSTEMS (Notion/Obsidian/Roam/Logseq)
-   today: they structure information, but the structure is NOT part of the format.
-   .bh:   the structure IS the format.
-
-COMPOSITE AI ASSETS
-   image + mask + depth + prompt + version + metadata.
-   today: a Frankenstein of systems. .bh: native.
-</code></pre>
+<p>One principle, four instances, each measured and tested — correctness as a gate,
+honest baselines, public self-corrections, a Zenodo DOI. The numbers exist
+(4.6×, 35×, 1,779×, 9×); the point is that the <strong>principle held every time</strong>.</p>
 <hr>
 <h2 id="slide-7-the-state-and-the-ask">SLIDE 7 — The state and the ask</h2>
 <ul>
-<li><strong>Validated by measurement</strong>, not by slide: 9 angles tested, 128+ green
-  tests, correctness as a gate, honest baselines, public self-corrections.</li>
-<li><strong>Construction has begun:</strong> <code>bhmem</code> — a usable <code>.bh</code> for <strong>agent memory</strong>
-  (library + tests). The agent reads the summary / a topic / a window / the
-  provenance without loading the whole memory: <strong>35× / 22× / 9× / 8× fewer
-  bytes</strong> than a flat store. The thesis became a tool.</li>
-<li><strong>Not a finished product yet</strong> — it's a measured architecture with the first
-  executable artifact. The next step is to wire <code>bhmem</code> into a real agent loop
-  and add the verifiable-provenance face (Merkle over the blocks).</li>
+<li><strong>It is a principle with measured instances</strong>, not a finished product. The
+  sweep found its <strong>useful limit</strong> — and a useful limit is where a serious
+  product starts; without one, it's religion.</li>
+<li><strong>The next question is product, not novelty:</strong> of the domains where it fits,
+  which is the first seed worth building for real?</li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>The value isn't in the compressed block. It's in the structure that knows
-what that block means.</strong></p>
+<p><strong>Don't duplicate the world every time someone disagrees with it.</strong></p>
 </blockquote></main>
 <div class="foot">Hierarchical Bits · © 2025–2026 Márcio M. Carvalho · code under Apache-2.0, docs under CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/hierarchical-bits">repository</a></div>
 </body></html>

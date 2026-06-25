@@ -37,6 +37,15 @@ e não **sinal** (ruído/perceptual). No limite, o payload vira um *programa* qu
 gera o dado (ganhos de milhares×); a fronteira não é a entropia — é o
 reconhecimento da estrutura.
 
+**Enquadramento conceitual (adicionado após este estudo).** Uma varredura
+posterior de 20 domínios (`applicability/`) reformulou o BH de *formato de
+arquivo* para *propriedade de representação* — a **First-Class Interpretation
+Representation (FCIR)**: interpretações rivais mantidas como entidades de 1ª
+classe, co-registadas sobre um substrato imutável, sem adjudicação forçada. A
+economia de substrato-partilhado que este estudo mede é real mas já é SOTA maduro
+na maioria dos domínios; o FCIR é onde o BH mais claramente difere dos sistemas
+atuais. Ver `BH_PRINCIPLE.md`.
+
 ---
 
 ## 1. METODOLOGIA (o que torna este estudo confiável)

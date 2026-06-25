@@ -178,71 +178,77 @@ def build_doc_pages() -> None:
 LANDING = {
     "en": {
         "title": "Hierarchical Bits",
-        "pill": "Measured study · usable prototype · open source",
-        "lead": ('A <b>structural envelope</b>: it represents a heterogeneous asset, '
-                 'navigates parts of it without loading everything, and delegates each '
-                 'region to the best specialist format.'),
-        "sub": ('Most formats force you to pick <i>one</i>: compact (but to see one piece, '
-                'decode all of it) or navigable (but structure bolted on top, across several '
-                'systems). BH is compact <b>and</b> navigable, in a single file.'),
-        "cap_h": "The core capability — not a benchmark",
-        "cap_p": ('The heart of BH is not "being smaller". It\'s <b>reading only the part you '
-                  'need</b>. The <code>bhmem</code> prototype (agent memory) measures it in real bytes:'),
-        "th": ["reading", "bytes read", "vs flat store (reads all)"],
+        "pill": "A representation principle · measured · open source",
+        "lead": ('BH is a <b>representation model</b> where multiple — possibly contradictory '
+                 '— interpretations share <b>one immutable substrate</b> and stay queryable, '
+                 'without duplicating the data and without forcing them into a single truth.'),
+        "sub": ("The heart, in one line: <b>don't duplicate the world every time someone "
+                "disagrees with it.</b> The distinguishing property — rival interpretations "
+                "kept as first-class entities — is the <b>First-Class Interpretation "
+                "Representation (FCIR)</b>."),
+        "cap_h": "What makes it different — and what doesn't",
+        "cap_p": ('Storing a substrate once and reading it selectively is <i>already</i> mature '
+                  'SOTA (DICOM, COG, lakeFS, S-LoRA…) — BH does not claim that. A '
+                  '<a href="' + GH + '/tree/main/applicability">20-domain sweep</a> found the '
+                  '<a href="' + GH + '/blob/main/BH_PRINCIPLE.md">FCIR</a> still under-explored: '
+                  'the same model held across four very different prototypes —'),
+        "th": ["instance", "domain", "the same model, instantiated"],
         "rows": [
-            ("<code>summary()</code> — digest of all topics", "2.5%", "<b>35× less</b>"),
-            ("<code>recall(topic)</code> — one branch", "4.0%", "<b>22× less</b>"),
-            ("<code>since(t)</code> — time window", "9.8%", "<b>9× less</b>"),
-            ("<code>provenance(id)</code> — source of 1 memory", "10.8%", "<b>8× less</b>"),
+            ("<code>bhanno</code>", "rival annotations", "K labelings coexist, adjudication optional — the purest"),
+            ("<code>bhmem</code>", "agent memory", "conflicting versions over one history"),
+            ("<code>bhckpt</code>", "model checkpoints", "alternative readings of one shared base"),
+            ("<code>bhtrace</code>", "traces", "competing lenses over one span tree"),
         ],
         "cards": [
             ("master.html", "The Study (Master)",
              "9 angles tested, declared method, honest baselines, public self-corrections, "
              "Related Work. Zenodo-ready."),
             ("pitch.html", "Pitch — Presentation",
-             "7 slides. Leads with the core capability: read only what you need."),
+             "7 slides. Leads with FCIR and states its own limit."),
             ("visual.html", "Pitch — Visual",
              "4 comparative charts + the evidence panel (with the baseline labeled)."),
             (GH, "Code on GitHub",
              "The bhmem prototype (agent memory as .bh), the terrains tested, and how to "
              "reproduce everything."),
         ],
-        "quote": ("The value isn't in the compressed block. It's in the structure that knows "
-                  "what that block means."),
+        "quote": "Don't duplicate the world every time someone disagrees with it.",
     },
     "pt": {
         "title": "Bits Hierárquicos",
-        "pill": "Estudo medido · protótipo usável · código aberto",
-        "lead": ('Um <b>envelope estrutural</b>: representa um ativo heterogêneo, navega por '
-                 'partes dele sem carregar tudo, e delega cada região ao melhor formato '
-                 'especialista.'),
-        "sub": ('A maioria dos formatos te obriga a escolher <i>um</i>: compacto (mas para ver '
-                'um pedaço, decodifica tudo) ou navegável (mas é estrutura colada por cima, em '
-                'vários sistemas). O BH é compacto <b>e</b> navegável, num arquivo só.'),
-        "cap_h": "A capacidade central — não um benchmark",
-        "cap_p": ('O coração do BH não é "ser menor". É <b>ler só a parte que você precisa</b>. '
-                  'O protótipo <code>bhmem</code> (memória de agente) mede isso em bytes reais:'),
-        "th": ["leitura", "bytes lidos", "vs store plano (lê tudo)"],
+        "pill": "Um princípio de representação · medido · código aberto",
+        "lead": ('O BH é um <b>modelo de representação</b> onde múltiplas interpretações — '
+                 'possivelmente contraditórias — partilham <b>um substrato imutável</b> e '
+                 'permanecem consultáveis, sem duplicar o dado nem as forçar a uma única verdade.'),
+        "sub": ('O coração, numa linha: <b>não duplicar o mundo toda vez que alguém discorda '
+                'dele.</b> A propriedade distintiva — interpretações rivais mantidas como '
+                'entidades de 1ª classe — é a <b>First-Class Interpretation Representation '
+                '(FCIR)</b>.'),
+        "cap_h": "O que o torna diferente — e o que não torna",
+        "cap_p": ('Guardar um substrato uma vez e ler seletivo <i>já</i> é SOTA maduro '
+                  '(DICOM, COG, lakeFS, S-LoRA…) — o BH não reivindica isso. Uma '
+                  '<a href="' + GH + '/tree/main/applicability">varredura de 20 domínios</a> '
+                  'achou a <a href="' + GH + '/blob/main/BH_PRINCIPLE.md">FCIR</a> ainda pouco '
+                  'explorada: o mesmo modelo manteve-se em quatro protótipos muito diferentes —'),
+        "th": ["instância", "domínio", "o mesmo modelo, instanciado"],
         "rows": [
-            ("<code>summary()</code> — resumo de todos os tópicos", "2,5%", "<b>35× menos</b>"),
-            ("<code>recall(tópico)</code> — um ramo", "4,0%", "<b>22× menos</b>"),
-            ("<code>since(t)</code> — janela temporal", "9,8%", "<b>9× menos</b>"),
-            ("<code>provenance(id)</code> — fonte de 1 memória", "10,8%", "<b>8× menos</b>"),
+            ("<code>bhanno</code>", "anotações rivais", "K rotulagens coexistem, adjudicação opcional — a mais pura"),
+            ("<code>bhmem</code>", "memória de agente", "versões conflitantes sobre um histórico"),
+            ("<code>bhckpt</code>", "checkpoints de modelo", "leituras alternativas de uma base partilhada"),
+            ("<code>bhtrace</code>", "traces", "lentes concorrentes sobre uma árvore de spans"),
         ],
         "cards": [
             ("master.pt.html", "O Estudo (Master)",
              "9 ângulos testados, método declarado, baselines honestos, autocorreções "
              "públicas, Related Work. Pronto para Zenodo."),
             ("pitch.pt.html", "Pitch — Apresentação",
-             "7 slides. Lidera com a capacidade central: ler só o que precisa."),
+             "7 slides. Lidera com a FCIR e enuncia o seu próprio limite."),
             ("visual.pt.html", "Pitch — Visual",
              "4 gráficos comparativos + o painel de evidências (com baseline rotulado)."),
             (GH, "Código no GitHub",
              "O protótipo bhmem (memória de agente em .bh), os terrenos testados, e como "
              "reproduzir tudo."),
         ],
-        "quote": ("O valor não está no bloco comprimido. Está na estrutura que sabe o que "
-                  "aquele bloco significa."),
+        "quote": "Não duplicar o mundo toda vez que alguém discorda dele.",
     },
 }
 

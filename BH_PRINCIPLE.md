@@ -1,6 +1,7 @@
 # Hierarchical Bits — The Principle
+## First-Class Interpretation Representation (FCIR)
 
-> *From a file format to a representation model.*
+> *From a file format to a property of representation.*
 
 The applicability sweep ([`applicability/`](applicability/)) established something
 uncomfortable and clarifying: the BH **shape** — a heavy substrate stored once,
@@ -14,11 +15,20 @@ instances of — and principles survive where formats age.
 
 ## The thesis
 
-> **Hierarchical Bits is not a storage format. It is a representation model in
-> which multiple concurrent — and possibly contradictory — interpretations share
-> a single immutable substrate and persist as co-equal, first-class,
+> **Hierarchical Bits is not a storage format. It is a way of representing data
+> in which multiple concurrent — and possibly contradictory — interpretations
+> share a single immutable substrate and persist as co-equal, first-class,
 > individually addressable entities; adjudication between them is deferred to
 > read-time and optional, never baked in and never destructive.**
+
+We name this property the **First-Class Interpretation Representation (FCIR)**:
+*a representation in which interpretations are first-class — persistent,
+addressable, co-equal — rather than temporary versions or conflicts to be
+resolved away.* "First-class" is the load-bearing word: it is what separates an
+interpretation that has independent standing from one that exists only until it
+is merged into a single truth. The name describes the **differential the sweep
+surfaced**, not a cage for the theory — BH may yet express other properties; FCIR
+is the one where it most clearly differs from current systems today.
 
 ## The distinguishing test
 

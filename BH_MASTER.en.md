@@ -37,6 +37,14 @@ and not **signal** (noise/perceptual). At the limit, the payload becomes a *prog
 generates the data (gains of thousands×); the boundary is not entropy — it is
 structure recognition.
 
+**Conceptual framing (added after this study).** A later sweep of 20 domains
+(`applicability/`) reframed BH from a *file format* to a *property of
+representation* — the **First-Class Interpretation Representation (FCIR)**: rival
+interpretations kept as first-class, co-registered entities over one immutable
+substrate, without forced adjudication. The substrate-sharing economics this
+study measures are real but already mature SOTA in most domains; FCIR is where BH
+most clearly differs from current systems. See `BH_PRINCIPLE.md`.
+
 ---
 
 ## 1. METHODOLOGY (what makes this study trustworthy)

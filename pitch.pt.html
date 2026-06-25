@@ -74,118 +74,132 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
 <div class="nav"><div class="in"><a href="index.pt.html" class="brand">Bits Hierárquicos</a><a href="index.pt.html" class="">Início</a><a href="master.pt.html" class="">Estudo</a><a href="pitch.pt.html" class="active">Pitch</a><a href="visual.pt.html" class="">Pitch Visual</a><a class="lang" href="pitch.html" title="Switch language">EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.20821058" title="Zenodo DOI">DOI</a><a class="gh" href="https://github.com/mmcarvalhodev/hierarchical-bits">GitHub ↗</a></div></div>
 <main><h1 id="bits-hierarquicos-pitch-de-apresentacao">Bits Hierárquicos — Pitch de Apresentação</h1>
 <blockquote>
-<p><strong>Em uma frase:</strong> é uma estrutura que permite representar um ativo
-heterogêneo, navegar por partes dele sem carregar tudo, e delegar cada
-região ao melhor formato especialista.</p>
+<p><strong>Numa frase:</strong> um modelo de representação onde múltiplas interpretações —
+possivelmente contraditórias — partilham um substrato imutável e permanecem
+consultáveis, sem duplicar o dado e sem as forçar a uma única verdade.</p>
 </blockquote>
 <hr>
 <h2 id="slide-1-o-problema">SLIDE 1 — O problema</h2>
-<p>Todo dado hoje te obriga a escolher <strong>um</strong>:</p>
-<ul>
-<li><strong>Compacto</strong> (JPEG/WebP/AVIF) → mas para ver um pedaço, decodifica tudo.</li>
-<li><strong>Navegável</strong> (índices, OLAP, vector DB) → mas é estrutura colada por cima,
-  em vários sistemas que precisam ser sincronizados.</li>
-</ul>
-<p>O dado nasce cru, e o resto do stack gasta tempo, espaço e complexidade
-<strong>redescobrindo a estrutura dele</strong> — índices, agregados, previews, caches,
-provas, metadados. Tudo espalhado em sistemas separados.</p>
-<hr>
-<h2 id="slide-2-a-ideia-nao-e-um-codec-nem-um-banco">SLIDE 2 — A ideia (não é um codec, nem um banco)</h2>
-<p><strong>Bits Hierárquicos (BH)</strong> é um <strong>envelope estrutural</strong>: o dado nasce com a
-sua própria estrutura. Em vez de comprimir tudo numa base só, o BH:</p>
-<pre><code>1. torna a estrutura EXPLÍCITA   — hierarquia, pertencimento, regras (custo: 0–6%)
-2. ROTEIA cada região            — foto→WebP, gradiente→fórmula, texto→PNG
-3. permite MÚLTIPLAS leituras    — preview / região / agregado / prova
-</code></pre>
 <blockquote>
-<p>Não substitui codecs. <strong>Orquestra</strong> codecs por região, dentro de uma
-estrutura que sabe o que cada região significa.</p>
+<p><strong>Não duplicar o mundo toda vez que alguém discorda dele.</strong></p>
 </blockquote>
+<p>Parte de uma base comum — um dataset, um edifício, um conjunto documental, um
+histórico de conversa. Sobre essa base, surgem naturalmente várias
+interpretações: anotadores rotulam-na, disciplinas leem-na de forma diferente,
+hipóteses competem sobre ela, versões acumulam-se. Elas <strong>coexistem</strong>.</p>
+<p>Hoje, segurá-las obriga a uma escolha má:</p>
+<ul>
+<li><strong>copiar a base</strong> uma vez por interpretação → K leituras custam K cópias do
+  mundo; ou</li>
+<li><strong>fundir numa só</strong> → uma representação dominante vence e o resto perde-se.</li>
+</ul>
 <hr>
-<h2 id="slide-3-a-capacidade-central">SLIDE 3 — A capacidade central</h2>
-<p>O coração do BH não é "ser menor". É <strong>ler só a parte que você precisa, sem
-decodificar o resto</strong> — uma capacidade que nenhum formato compacto tem. O
-tamanho é consequência, não a promessa.</p>
+<h2 id="slide-2-a-ideia-um-modelo-nao-um-formato">SLIDE 2 — A ideia (um modelo, não um formato)</h2>
+<blockquote>
+<p><strong>BH é um modelo de representação para substratos imutáveis partilhados e
+interpretações concorrentes.</strong></p>
+</blockquote>
+<p>Um substrato, guardado uma vez e imutável. Cada interpretação é uma <strong>entidade
+de 1ª classe, co-registada</strong> sobre ele. O leitor escolhe a lente no momento da
+leitura — a adjudicação é diferida e opcional, nunca embutida.</p>
+<pre><code>SUBSTRATO     guardado uma vez, imutável, partilhado por toda leitura
+CAMADAS       cada interpretação é entidade de 1ª classe, co-registada
+LEITURAS      uma lente / a matriz / a maioria / a discordância
+              — tua escolha, no momento da leitura, não embutida
+</code></pre>
+<p>Chamamos a esta propriedade a <strong>First-Class Interpretation Representation
+(FCIR)</strong> — interpretações mantidas como entidades persistentes, endereçáveis e
+de <em>primeira classe</em> sobre um substrato partilhado, em vez de versões
+temporárias ou conflitos a resolver.</p>
+<hr>
+<h2 id="slide-3-o-teste-distintivo-falsificavel">SLIDE 3 — O teste distintivo (falsificável)</h2>
+<blockquote>
+<p>Dadas duas interpretações que <strong>discordam</strong> sobre o mesmo elemento — podem
+<strong>ambas permanecer</strong>, nenhuma marcada como errada, até alguém escolher (ou
+recusar) adjudicar?</p>
+</blockquote>
+<p>Muitos sistemas acabam por <strong>convergir para uma representação dominante</strong>, ou por
+<strong>isolar cada interpretação numa cópia/versão independente</strong>. O BH mantém-nas
+co-registadas sobre um substrato e deixa a adjudicação esperar. É esse o
+diferencial — enunciado como um teste que se corre em qualquer sistema, não como
+gabarolice.</p>
+<hr>
+<h2 id="slide-4-o-que-nao-somos-o-posicionamento-honesto">SLIDE 4 — O que NÃO somos (o posicionamento honesto)</h2>
+<p>Varremos 20 domínios de dados. O resultado matou a alegação fácil de que "o BH é
+universalmente novo":</p>
+<blockquote>
+<p><strong>Guardar o substrato uma vez + ler seletivo já é SOTA maduro</strong> — DICOM,
+COG/STAC, lakeFS, CRAM/tabix, S-LoRA, MAM. O BH <strong>não</strong> afirma inventar isso.</p>
+</blockquote>
+<p>A varredura mostrou que a <strong>First-Class Interpretation Representation (FCIR)</strong> —
+manter leituras rivais como entidades preservadas em vez de as resolver — é o
+aspeto em que o BH mais claramente se diferencia das soluções atuais. Dizer com
+clareza o que o BH <strong>não</strong> é, é o que sobrevive ao engenheiro cético.</p>
+<hr>
+<h2 id="slide-5-onde-serve-e-onde-nao-o-limite-util">SLIDE 5 — Onde serve, e onde não (o limite útil)</h2>
+<pre><code>SERVE     várias leituras de UM objeto-base:
+          · anotação com anotadores que discordam
+          · memória de agente com versões conflitantes sobre um histórico
+          · BIM/CAD — disciplinas a ler um edifício (não cinco cópias)
+          · legal / eDiscovery — leituras rivais de um conjunto documental
+          · ciência — hipóteses concorrentes sobre o mesmo dado bruto
+
+NÃO SERVE  sinal denso (foto / áudio / embeddings) → delega a codecs
+           objetivos de verdade-única (consenso, gold labels) → já resolvido
+</code></pre>
+<p>Um pitch que enuncia o seu próprio limite é o oposto de vapor.</p>
+<hr>
+<h2 id="slide-6-a-evidencia-o-principio-e-reprodutivel">SLIDE 6 — A evidência (o princípio é reprodutível)</h2>
+<p>O mesmo modelo apareceu — de forma independente — em quatro domínios
+completamente diferentes. Essa <strong>reprodutibilidade</strong> vale mais do que qualquer
+número isolado:</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>resultado</th>
+<th>instância</th>
+<th>domínio</th>
+<th>o mesmo modelo, instanciado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Acessar uma região</strong></td>
-<td><strong>3–55× menos bytes</strong> que o WebP (que decodifica o arquivo TODO para qualquer pedaço)</td>
+<td><code>bhanno</code></td>
+<td>anotações rivais</td>
+<td>a mais pura: K rotulagens coexistem, adjudicação opcional</td>
 </tr>
 <tr>
-<td>...e ainda menor</td>
-<td>2,1× menor que o WebP, no mesmo arquivo</td>
+<td><code>bhmem</code></td>
+<td>memória de agente</td>
+<td>versões conflitantes sobre um histórico</td>
 </tr>
 <tr>
-<td>Custo de tornar a estrutura explícita</td>
-<td>apenas 0–6% do arquivo</td>
+<td><code>bhckpt</code></td>
+<td>checkpoints de modelo</td>
+<td>leituras alternativas de uma base partilhada</td>
+</tr>
+<tr>
+<td><code>bhtrace</code></td>
+<td>traces</td>
+<td>lentes concorrentes sobre uma árvore de spans</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Capacidade, não benchmark.</strong> "Leio só o ramo que preciso" é uma propriedade
-do formato — não depende de qual documento, de qual dataset, de qual condição.
-É isso que sobrevive ao engenheiro cético. Compacto <strong>E</strong> navegável, num
-arquivo só — hoje isso exige quatro ferramentas.</p>
-</blockquote>
-<hr>
-<h2 id="slide-4-por-que-e-diferente">SLIDE 4 — Por que é diferente</h2>
-<p>O BH converge para algo que mistura, sem ser nenhum deles:</p>
-<pre><code>PDF    → orquestração de especialistas
-Merkle → hierarquia verificável
-OLAP   → leitura seletiva
-AST    → estrutura explícita
-</code></pre>
-<p>Ninguém vende <strong>representação + leitura + pertencimento + hierarquia +
-múltiplas visões</strong> como uma estrutura única. <strong>Esse é o pedaço novo.</strong></p>
-<hr>
-<h2 id="slide-5-onde-ganha-honesto">SLIDE 5 — Onde ganha (honesto)</h2>
-<pre><code>GANHA   dado ESTRUTURA-DOMINANTE: documentos, diagramas, UIs, mapas, dados em
-        camadas, saídas estruturadas de IA, conhecimento simbólico.
-        No limite (dado gerado por regra): o payload vira o PROGRAMA que o
-        gera — 800× a 3.600× menor.
-DELEGA  sinal denso (foto, áudio, embedding) → WebP/AVIF/HNSW reinam, e o BH
-        os CONVOCA. Não compete onde não deve.
-</code></pre>
-<p>A fronteira não é a entropia — é o <strong>reconhecimento da estrutura</strong>.</p>
-<hr>
-<h2 id="slide-6-onde-alguem-diria-isso-e-diferente">SLIDE 6 — Onde alguém diria "isso é diferente"</h2>
-<pre><code>MEMÓRIA DE AGENTES
-   hoje: documentos + embeddings + resumos + cache + índices + metadados,
-         tudo espalhado.
-   .bh:  um único envelope navegável.
-
-KNOWLEDGE SYSTEMS (Notion/Obsidian/Roam/Logseq)
-   hoje: estruturam informação, mas a estrutura NÃO é parte do formato.
-   .bh:  a estrutura É o formato.
-
-ATIVOS COMPOSTOS DE IA
-   imagem + máscara + profundidade + prompt + versão + metadados.
-   hoje: um Frankenstein de sistemas. .bh: nativo.
-</code></pre>
+<p>Um princípio, quatro instâncias, cada uma medida e testada — correção como
+portão, baselines honestos, autocorreções públicas, um DOI no Zenodo. Os números
+existem (4,6×, 35×, 1 779×, 9×); o ponto é que o <strong>princípio se manteve as quatro
+vezes</strong>.</p>
 <hr>
 <h2 id="slide-7-o-estado-e-o-pedido">SLIDE 7 — O estado e o pedido</h2>
 <ul>
-<li><strong>Validado por medição</strong>, não por slide: 9 ângulos testados, 128+ testes
-  verdes, correção como portão, baselines honestos, autocorreções públicas.</li>
-<li><strong>A construção começou:</strong> <code>bhmem</code> — um <code>.bh</code> usável para <strong>memória de
-  agente</strong> (biblioteca + testes). O agente lê o resumo / um tópico / uma janela
-  / a proveniência sem carregar a memória inteira: <strong>35× / 22× / 9× / 8× menos
-  bytes</strong> que um store plano. A tese virou ferramenta.</li>
-<li><strong>Ainda não é um produto</strong> — é uma arquitetura medida com o primeiro artefato
-  executável. O próximo passo é ligar o <code>bhmem</code> a um loop de agente real e
-  somar a face de proveniência verificável (Merkle sobre os blocos).</li>
+<li><strong>É um princípio com instâncias medidas</strong>, não um produto acabado. A varredura
+  encontrou o seu <strong>limite útil</strong> — e um limite útil é onde um produto sério
+  começa; sem limite, vira religião.</li>
+<li><strong>A pergunta seguinte é produto, não novidade:</strong> dos domínios onde serve, qual
+  é a primeira semente a construir a sério?</li>
 </ul>
 <hr>
 <blockquote>
-<p><strong>O valor não está no bloco comprimido. Está na estrutura que sabe o que
-aquele bloco significa.</strong></p>
+<p><strong>Não duplicar o mundo toda vez que alguém discorda dele.</strong></p>
 </blockquote></main>
 <div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho · código sob Apache-2.0, documentos sob CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/hierarchical-bits">repositório</a></div>
 </body></html>
