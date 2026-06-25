@@ -4,50 +4,40 @@
 
 # Bits Hierárquicos (BH)
 
-> **Um envelope estrutural: representa um ativo heterogêneo, navega por partes
-> dele sem carregar tudo, e delega cada região ao melhor formato especialista.**
+> **Bits Hierárquicos (BH) é um modelo de representação onde múltiplas
+> interpretações — possivelmente contraditórias — partilham um substrato imutável
+> e permanecem consultáveis, sem duplicar o dado nem as forçar a uma única
+> verdade.**
 
 📄 **Leia online (site bilíngue):** https://mmcarvalhodev.github.io/hierarchical-bits/
 
-A maioria dos formatos te obriga a escolher **um**: *compacto* (JPEG/WebP — mas
-para ver um pedaço, decodifica tudo) **ou** *navegável* (índices, OLAP, vector
-DB — mas é estrutura colada por cima, em vários sistemas que precisam ser
-sincronizados). O BH grava **um envelope** onde a estrutura é parte do formato:
-compacto **e** navegável, num arquivo só.
+O coração, numa linha: **não duplicar o mundo toda vez que alguém discorda dele.**
+Parte de uma base comum — um dataset, um edifício, um conjunto documental, um
+histórico. Sobre ela surgem várias interpretações: anotadores rotulam-na,
+disciplinas leem-na de forma diferente, hipóteses competem, versões acumulam-se.
+Hoje, segurá-las obriga a uma escolha má — **copiar a base** uma vez por
+interpretação, ou **fundir numa só** e perder o resto.
 
-```
-1. torna a estrutura EXPLÍCITA   — hierarquia, pertencimento (custo: 0–6%)
-2. ROTEIA cada região            — foto→WebP, gradiente→fórmula, texto→PNG
-3. permite MÚLTIPLAS leituras    — preview / região / agregado / prova
-```
+## O que o torna diferente — e o que não torna
 
-## A capacidade central (não um benchmark)
+Guardar um substrato uma vez e ler seletivo **já é SOTA maduro** — DICOM,
+COG/STAC, lakeFS, CRAM/tabix, S-LoRA, MAM. O BH **não** reivindica inventar isso.
+Uma [varredura de 20 domínios](applicability/) apontou a propriedade ainda pouco
+explorada, à qual damos um **nome de trabalho**: a **First-Class Interpretation
+Representation (FCIR)** — interpretações mantidas como entidades persistentes,
+endereçáveis e co-iguais sobre um substrato partilhado, com adjudicação
+**diferida e opcional**.
 
-O coração do BH não é "ser menor". É **ler só a parte que você precisa, sem
-decodificar o resto** — uma propriedade do formato, não de um dataset.
+> A afirmação honesta, com o escopo do que varremos: **a nossa investigação
+> identificou a FCIR como a propriedade que melhor distingue o BH das abordagens
+> avaliadas** — um resultado, não uma lei universal, e um nome de trabalho que
+> deve seguir a ideia, não aprisioná-la. Ver [`BH_PRINCIPLE.md`](BH_PRINCIPLE.md).
 
-**`bhmem`** ([`bhmem/`](bhmem/)) é o primeiro artefato usável: memória de agente
-como `.bh`. O agente lê o resumo, um tópico, uma janela temporal ou a
-proveniência **sem carregar a memória inteira** (medido em bytes reais lidos):
-
-| leitura | bytes lidos | vs store plano (lê tudo) |
-|---|---|---|
-| `summary()` — resumo de todos os tópicos | 2,5% | **35× menos** |
-| `recall(tópico)` — um ramo | 4,0% | **22× menos** |
-| `since(t)` — janela temporal | 9,8% | **9× menos** |
-| `provenance(id)` — fonte de 1 memória | 10,8% | **8× menos** |
-
-## Onde rende e onde delega (a fronteira honesta)
-
-```
-GANHA   dado ESTRUTURA-dominante: documentos, diagramas, dados em camadas,
-        saídas estruturadas de IA, conhecimento simbólico. No limite (dado
-        gerado por regra): o payload vira o PROGRAMA que o gera — 800–3.600×.
-DELEGA  sinal denso (foto, áudio, embedding) → WebP/AVIF/HNSW reinam, e o BH
-        os CONVOCA. Não compete onde não deve.
-```
-
-A fronteira não é a entropia — é o **reconhecimento da estrutura**.
+**O teste distintivo (falsificável):** dadas duas interpretações que discordam
+sobre o mesmo elemento, podem **ambas permanecer** — nenhuma marcada como errada
+— até alguém escolher (ou recusar) adjudicar? Muitos sistemas convergem para uma
+verdade, ou isolam cada leitura numa cópia/versão independente. O BH mantém-nas
+co-registadas sobre um substrato e deixa a adjudicação esperar.
 
 ## O que há neste repositório
 
@@ -92,5 +82,4 @@ python build_site.py                      # site bilíngue (EN padrão + PT)
 
 ---
 
-*"O valor não está no bloco comprimido. Está na estrutura que sabe o que aquele
-bloco significa."*
+*"Não duplicar o mundo toda vez que alguém discorda dele."*

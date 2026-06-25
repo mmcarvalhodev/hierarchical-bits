@@ -4,52 +4,40 @@
 
 # Hierarchical Bits (BH)
 
-> **A structural envelope: it represents a heterogeneous asset, navigates parts
-> of it without loading everything, and delegates each region to the best
-> specialist format.**
+> **Hierarchical Bits (BH) is a representation model where multiple — possibly
+> contradictory — interpretations share one immutable substrate and stay
+> queryable, without duplicating the data and without forcing them into a single
+> truth.**
 
 📄 **Read online (bilingual site):** https://mmcarvalhodev.github.io/hierarchical-bits/
 
-Most formats force you to pick **one**: *compact* (JPEG/WebP — but to see one
-piece, you decode all of it) **or** *navigable* (indexes, OLAP, vector DB — but
-it's structure bolted on top, across several systems that must be kept in sync).
-BH writes **one envelope** where structure is part of the format: compact **and**
-navigable, in a single file.
+The heart, in one line: **don't duplicate the world every time someone disagrees
+with it.** Start from a common base — one dataset, one building, one document set,
+one history. Over it, several interpretations naturally arise: annotators label
+it, disciplines read it differently, hypotheses compete over it, versions
+accumulate. Today, holding them forces a bad choice — **copy the base** once per
+interpretation, or **merge to one** and lose the rest.
 
-```
-1. makes structure EXPLICIT   — hierarchy, belonging (cost: 0–6%)
-2. ROUTES each region          — photo→WebP, gradient→formula, text→PNG
-3. allows MULTIPLE readings    — preview / region / aggregate / proof
-```
+## What makes it different — and what doesn't
 
-## The core capability (not a benchmark)
+Storing a substrate once and reading it selectively is **already mature SOTA** —
+DICOM, COG/STAC, lakeFS, CRAM/tabix, S-LoRA, MAM. BH does **not** claim to invent
+that. A [20-domain sweep](applicability/) pointed to the still-under-explored
+property, which we give a **working name**: the **First-Class Interpretation
+Representation (FCIR)** — interpretations kept as persistent, addressable,
+co-equal entities over a shared substrate, with adjudication **deferred and
+optional**.
 
-The heart of BH is not "being smaller". It's **reading only the part you need,
-without decoding the rest** — a property of the format, not of a dataset.
+> The honest claim, scoped to what we surveyed: **our investigation identified
+> FCIR as the property that best distinguishes BH from the approaches evaluated**
+> — a result, not a universal law, and a working name that should follow the idea
+> rather than cage it. See [`BH_PRINCIPLE.md`](BH_PRINCIPLE.md).
 
-**`bhmem`** ([`bhmem/`](bhmem/)) is the first usable artifact: agent memory as
-`.bh`. The agent reads the summary, a topic, a time window or the provenance
-**without loading the whole memory** (measured in real bytes read):
-
-| reading | bytes read | vs flat store (reads all) |
-|---|---|---|
-| `summary()` — digest of all topics | 2.5% | **35× less** |
-| `recall(topic)` — one branch | 4.0% | **22× less** |
-| `since(t)` — time window | 9.8% | **9× less** |
-| `provenance(id)` — source of 1 memory | 10.8% | **8× less** |
-
-## Where it pays off and where it delegates (the honest boundary)
-
-```
-WINS       STRUCTURE-dominant data: documents, diagrams, layered data,
-           structured AI outputs, symbolic knowledge. At the limit (rule-
-           generated data): the payload becomes the PROGRAM that generates it
-           — 800–3,600×.
-DELEGATES  dense signal (photo, audio, embedding) → WebP/AVIF/HNSW reign, and
-           BH CALLS them. It doesn't compete where it shouldn't.
-```
-
-The boundary is not entropy — it's **structure recognition**.
+**The distinguishing test (falsifiable):** given two interpretations that
+disagree about the same element, can **both remain** — neither marked wrong —
+until a reader chooses (or declines) to adjudicate? Many systems converge to one
+truth, or isolate each reading into an independent copy/version. BH keeps them
+co-registered over one substrate and lets adjudication wait.
 
 ## What's in this repository
 
@@ -94,5 +82,4 @@ python build_site.py                      # bilingual site (EN default + PT)
 
 ---
 
-*"The value isn't in the compressed block. It's in the structure that knows what
-that block means."*
+*"Don't duplicate the world every time someone disagrees with it."*
