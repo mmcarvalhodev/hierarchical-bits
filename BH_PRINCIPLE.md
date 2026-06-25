@@ -73,6 +73,55 @@ Property 1 is the part that is already everywhere. Properties **3 and 4** are
 the part the sweep found **still under-explored**: most systems treat rival
 interpretations as a mess to clean up, not as co-equal entities to keep.
 
+## How FCIR relates to adjacent systems
+
+A blind read test (five fresh reviewers, three model tiers, README only)
+converged on one verdict: the *message* is clear, but the *novelty* is not yet
+defended — every reviewer independently named existing systems they believed
+already do this. They were right to. Here is the confrontation, under one rule:
+**where a system already does exactly this, we say so — no makeup.**
+
+The FCIR property has five parts: (1) one shared, immutable substrate;
+(2) interpretations that may **contradict**; (3) kept as first-class,
+addressable, co-equal entities; (4) co-registered to the **same substrate
+elements**; (5) adjudication **deferred and optional** — neither reading marked
+wrong.
+
+| system | satisfies all five? | honest verdict |
+|---|---|---|
+| **RDF named graphs + PROV** | yes, for triples | **already FCIR, in the triple/KG domain** |
+| **Standoff annotation** (W3C Web Annotation, UIMA/GATE) | yes, for text/media | **already FCIR, in the annotation domain** |
+| Git / branches | no | defers adjudication, but is built for *eventual merge*; branches are divergent whole-tree states, not co-equal readings co-registered per element |
+| Bitemporal DBs / Datomic | partial | immutable + non-destructive history, but *temporal supersession of one truth*, not co-equal **simultaneous** rivals from different interpreters |
+| CRDTs | no (opposite intent) | designed to **auto-converge** to one state without coordination; preserving disagreement is exactly what they remove (multi-value registers keep concurrent values only until the app resolves) |
+| Event sourcing | no | immutable log + many **derived** projections, but the projections are different shapes of *one* truth, not contradictory rivals |
+
+**The admission, without makeup.** Two of these — **RDF named graphs with
+provenance** and **standoff annotation** — already implement the FCIR property in
+full, each within its own domain. Our `bhanno` prototype *is* standoff
+annotation; it did not invent it. For triple-shaped knowledge, named graphs got
+there twenty years ago. **So FCIR is not a new mechanism, and any claim that
+"nobody does this" is false.**
+
+**What is left, then — stated at its honest size.** FCIR is an **architectural
+synthesis and a name**, not an invention:
+
+1. a **single name** for a property that today exists only in domain-specific
+   forms (named graphs for triples, standoff for text) and has *no shared term*
+   across images, BIM models, model weights, agent memory;
+2. a **falsifiable test** — *can two readings of the same element both remain,
+   neither marked wrong, until adjudication is chosen?* — that classifies any
+   system in one line;
+3. the **observation** that the property recurs across domains that do not talk
+   to each other, and that **most** systems in **most** domains do *not* have it
+   (they converge, merge, or supersede).
+
+That is a smaller claim than "a new representation paradigm." It may still be
+useful — naming a recurring property and giving it a test is how scattered
+practice becomes a discussable concept — but it **stands or falls as a
+synthesis**, and an honest reader should judge it as one, not as a mechanism that
+did not exist before.
+
 ## The prototypes are instances, not the point
 
 Each `.bh` prototype is one instance of the principle — and they vary in how

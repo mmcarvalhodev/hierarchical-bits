@@ -39,6 +39,24 @@ until a reader chooses (or declines) to adjudicate? Many systems converge to one
 truth, or isolate each reading into an independent copy/version. BH keeps them
 co-registered over one substrate and lets adjudication wait.
 
+## Prior art — honestly
+
+A blind read test had five independent reviewers immediately name systems that
+already do parts of this. They were right, and **two already do it in full**,
+each in its domain: **RDF named graphs + provenance** (for triples) and
+**standoff annotation** (W3C Web Annotation, UIMA — for text/media; our `bhanno`
+prototype *is* standoff annotation, it did not invent it). Git branches,
+bitemporal DBs / Datomic, CRDTs, and event sourcing each do an *adjacent but
+distinct* thing (eventual merge, temporal supersession, auto-convergence, derived
+views).
+
+So **FCIR is not a new mechanism** — it is an **architectural synthesis and a
+name**: one term + one falsifiable test for a property that today exists only
+domain-by-domain, with no shared vocabulary across triples, annotation, BIM,
+model weights, and agent memory. **Judge it as a synthesis, not an invention.**
+Full confrontation — including where existing systems already win — is in
+[`BH_PRINCIPLE.md`](BH_PRINCIPLE.md#how-fcir-relates-to-adjacent-systems).
+
 ## What's in this repository
 
 | | |

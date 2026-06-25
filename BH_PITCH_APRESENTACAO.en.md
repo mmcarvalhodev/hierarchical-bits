@@ -76,6 +76,11 @@ evaluated**. That is a result of the investigation, not a universal claim; FCIR
 is a working name, and the property may yet prove broader. Saying plainly what BH
 is *not* — and how far the claim reaches — is what survives the skeptical engineer.
 
+And FCIR is **not unique to BH**: RDF named graphs and standoff annotation already
+implement it in their own domains. So FCIR is a **synthesis and a cross-domain
+name, not a new mechanism** — judged as a synthesis, not an invention (full
+confrontation in `BH_PRINCIPLE.md`).
+
 ---
 
 ## SLIDE 5 — Where it fits, and where it doesn't (the useful limit)

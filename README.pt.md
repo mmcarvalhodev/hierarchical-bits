@@ -39,6 +39,24 @@ sobre o mesmo elemento, podem **ambas permanecer** — nenhuma marcada como erra
 verdade, ou isolam cada leitura numa cópia/versão independente. O BH mantém-nas
 co-registadas sobre um substrato e deixa a adjudicação esperar.
 
+## Prior art — honestamente
+
+Um teste cego teve cinco revisores independentes a apontar imediatamente sistemas
+que já fazem partes disto. Tinham razão, e **dois já o fazem por inteiro**, cada
+um no seu domínio: **RDF named graphs + proveniência** (para triplos) e
+**standoff annotation** (W3C Web Annotation, UIMA — para texto/média; o nosso
+protótipo `bhanno` *é* standoff annotation, não a inventou). Git branches, bancos
+bitemporais / Datomic, CRDTs e event sourcing fazem cada um algo *adjacente mas
+distinto* (merge eventual, supersessão temporal, auto-convergência, vistas
+derivadas).
+
+Portanto **a FCIR não é um mecanismo novo** — é uma **síntese arquitetural e um
+nome**: um termo + um teste falsificável para uma propriedade que hoje existe só
+domínio-a-domínio, sem vocabulário partilhado entre triplos, anotação, BIM, pesos
+de modelo e memória de agente. **Julga-a como síntese, não como invenção.** A
+confrontação completa — incluindo onde os sistemas existentes ganham — está em
+[`BH_PRINCIPLE.md`](BH_PRINCIPLE.md#how-fcir-relates-to-adjacent-systems).
+
 ## O que há neste repositório
 
 | | |

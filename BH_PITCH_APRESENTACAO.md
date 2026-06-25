@@ -76,6 +76,11 @@ universal; FCIR é um nome de trabalho, e a propriedade pode vir a revelar-se ma
 ampla. Dizer com clareza o que o BH **não** é — e até onde a afirmação alcança —
 é o que sobrevive ao engenheiro cético.
 
+E a FCIR **não é exclusiva do BH**: RDF named graphs e standoff annotation já a
+implementam nos seus domínios. Portanto a FCIR é uma **síntese e um nome
+transversal, não um mecanismo novo** — a julgar como síntese, não como invenção
+(confrontação completa em `BH_PRINCIPLE.md`).
+
 ---
 
 ## SLIDE 5 — Onde serve, e onde não (o limite útil)
