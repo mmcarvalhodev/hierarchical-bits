@@ -56,7 +56,9 @@ A fronteira não é a entropia — é o **reconhecimento da estrutura**.
 | [`BH_MASTER.md`](BH_MASTER.md) | O estudo sério: 9 ângulos testados, método declarado, baselines honestos, autocorreções públicas, Related Work. |
 | [`BH_PITCH_APRESENTACAO.md`](BH_PITCH_APRESENTACAO.md) | Pitch de apresentação (7 slides). |
 | [`BH_PITCH_VISUAL.md`](BH_PITCH_VISUAL.md) + [`pitch_assets/`](pitch_assets/) | Pitch com 4 gráficos comparativos. |
-| [`bhmem/`](bhmem/) | **O protótipo usável** — memória de agente em `.bh` (lib + testes). |
+| [`bhmem/`](bhmem/) | **Protótipo usável** — memória de agente em `.bh` (lib + testes, 35×/22×/9×/8×). |
+| [`bhtrace/`](bhtrace/) | **Protótipo usável** — um trace distribuído em `.bh` (ler o esqueleto sem o payload, ~9× menos). |
+| [`bhckpt/`](bhckpt/) | **Protótipo usável** — um checkpoint de modelo em `.bh` (arquitetura sem os pesos ~1.800× menos; carregar um expert MoE ~20× menos). |
 | `db/` `merkle/` `wafer/` `gpu/` `compositional/` … | Os terrenos testados, cada um com código + `RESULTS_*.md`. |
 
 *Versões em inglês: `BH_MASTER.en.md`, `BH_PITCH_APRESENTACAO.en.md`,

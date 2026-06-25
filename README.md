@@ -58,7 +58,9 @@ The boundary is not entropy — it's **structure recognition**.
 | [`BH_MASTER.en.md`](BH_MASTER.en.md) | The serious study: 9 angles tested, declared method, honest baselines, public self-corrections, Related Work. |
 | [`BH_PITCH_APRESENTACAO.en.md`](BH_PITCH_APRESENTACAO.en.md) | Presentation pitch (7 slides). |
 | [`BH_PITCH_VISUAL.en.md`](BH_PITCH_VISUAL.en.md) + [`pitch_assets/en/`](pitch_assets/en/) | Pitch with 4 comparative charts. |
-| [`bhmem/`](bhmem/) | **The usable prototype** — agent memory as `.bh` (lib + tests). |
+| [`bhmem/`](bhmem/) | **Usable prototype** — agent memory as `.bh` (lib + tests, 35×/22×/9×/8×). |
+| [`bhtrace/`](bhtrace/) | **Usable prototype** — a distributed trace as `.bh` (read the skeleton without the payload, ~9× less). |
+| [`bhckpt/`](bhckpt/) | **Usable prototype** — a model checkpoint as `.bh` (architecture without weights ~1,800× less; load one MoE expert ~20× less). |
 | `db/` `merkle/` `wafer/` `gpu/` `compositional/` … | The terrains tested, each with code + `RESULTS_*.md`. |
 
 *Portuguese originals: `BH_MASTER.md`, `BH_PITCH_APRESENTACAO.md`,

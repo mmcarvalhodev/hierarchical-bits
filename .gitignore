@@ -12,11 +12,14 @@ env/
 
 # Artefatos gerados (regeneráveis pelos scripts/demos)
 *.bh
+*.bht
+*.bckpt
 *.jsonl
 *.db
 *.sqlite
 embeddings/cache.db
 **/agent_memory.*
+**/trace.json
 _print_master.html
 
 # Saídas de imagem geradas (os PNGs do pitch são versionados; descomentar p/ ignorar)
