@@ -36,14 +36,17 @@ AST/JSON   → estrutura explícita, mas não compacto nem orquestra
 
 ## 2. Economia de substrato-partilhado — real, e já SOTA
 
-Não é "ou compacto ou navegável". É os dois, medido contra o WebP num
-documento estruturado.
+A economia de substrato-partilhado é real — medida contra o WebP num documento
+estruturado — **mas a varredura mostrou que este padrão já é SOTA maduro**
+(DICOM, COG, lakeFS, CRAM…). *Não* é onde o BH difere; é evidência de apoio, não
+o destaque.
 
-![A união medida](pitch_assets/02_uniao.png)
+![Substrato-partilhado, medido](pitch_assets/02_uniao.png)
 
 - **2,1× menor** que o WebP (cada região no formato que lhe convém).
 - **3–55× menos bytes** para ler qualquer região — o WebP decodifica o arquivo
-  inteiro para qualquer pedaço; o `.bh` lê só o ramo pedido.
+  inteiro para qualquer pedaço; o `.bh` lê só o ramo pedido. *(Leitura seletiva
+  — a parte já-SOTA, não o diferencial.)*
 
 ---
 

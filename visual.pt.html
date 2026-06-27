@@ -100,13 +100,16 @@ AST/JSON   → estrutura explícita, mas não compacto nem orquestra
 </code></pre>
 <hr>
 <h2 id="2-economia-de-substrato-partilhado-real-e-ja-sota">2. Economia de substrato-partilhado — real, e já SOTA</h2>
-<p>Não é "ou compacto ou navegável". É os dois, medido contra o WebP num
-documento estruturado.</p>
-<p><img alt="A união medida" src="pitch_assets/02_uniao.png"></p>
+<p>A economia de substrato-partilhado é real — medida contra o WebP num documento
+estruturado — <strong>mas a varredura mostrou que este padrão já é SOTA maduro</strong>
+(DICOM, COG, lakeFS, CRAM…). <em>Não</em> é onde o BH difere; é evidência de apoio, não
+o destaque.</p>
+<p><img alt="Substrato-partilhado, medido" src="pitch_assets/02_uniao.png"></p>
 <ul>
 <li><strong>2,1× menor</strong> que o WebP (cada região no formato que lhe convém).</li>
 <li><strong>3–55× menos bytes</strong> para ler qualquer região — o WebP decodifica o arquivo
-  inteiro para qualquer pedaço; o <code>.bh</code> lê só o ramo pedido.</li>
+  inteiro para qualquer pedaço; o <code>.bh</code> lê só o ramo pedido. <em>(Leitura seletiva
+  — a parte já-SOTA, não o diferencial.)</em></li>
 </ul>
 <hr>
 <h2 id="3-onde-rende-e-onde-delega-a-fronteira-honesta">3. Onde rende e onde delega (a fronteira honesta)</h2>

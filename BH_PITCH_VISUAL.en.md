@@ -37,14 +37,17 @@ AST/JSON   → explicit structure, but not compact and doesn't orchestrate
 
 ## 2. Substrate-sharing economics — real, and already SOTA
 
-It's not "either compact or navigable". It's both, measured against WebP on a
-structured document.
+The substrate-sharing economics are real — measured against WebP on a structured
+document — **but the sweep found this pattern is already mature SOTA** (DICOM,
+COG, lakeFS, CRAM…). It is *not* where BH differs; it is supporting evidence, not
+the headline.
 
-![The union measured](pitch_assets/en/02_uniao.png)
+![Substrate-sharing, measured](pitch_assets/en/02_uniao.png)
 
 - **2.1× smaller** than WebP (each region in the format that suits it).
 - **3–55× fewer bytes** to read any region — WebP decodes the entire file for
-  any piece; `.bh` reads only the requested branch.
+  any piece; `.bh` reads only the requested branch. *(Selective read — the
+  already-SOTA part, not the differentiator.)*
 
 ---
 

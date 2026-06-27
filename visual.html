@@ -101,13 +101,16 @@ AST/JSON   → explicit structure, but not compact and doesn't orchestrate
 </code></pre>
 <hr>
 <h2 id="2-substrate-sharing-economics-real-and-already-sota">2. Substrate-sharing economics — real, and already SOTA</h2>
-<p>It's not "either compact or navigable". It's both, measured against WebP on a
-structured document.</p>
-<p><img alt="The union measured" src="pitch_assets/en/02_uniao.png"></p>
+<p>The substrate-sharing economics are real — measured against WebP on a structured
+document — <strong>but the sweep found this pattern is already mature SOTA</strong> (DICOM,
+COG, lakeFS, CRAM…). It is <em>not</em> where BH differs; it is supporting evidence, not
+the headline.</p>
+<p><img alt="Substrate-sharing, measured" src="pitch_assets/en/02_uniao.png"></p>
 <ul>
 <li><strong>2.1× smaller</strong> than WebP (each region in the format that suits it).</li>
 <li><strong>3–55× fewer bytes</strong> to read any region — WebP decodes the entire file for
-  any piece; <code>.bh</code> reads only the requested branch.</li>
+  any piece; <code>.bh</code> reads only the requested branch. <em>(Selective read — the
+  already-SOTA part, not the differentiator.)</em></li>
 </ul>
 <hr>
 <h2 id="3-where-it-pays-off-and-where-it-delegates-the-honest-boundary">3. Where it pays off and where it delegates (the honest boundary)</h2>
