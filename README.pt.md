@@ -20,6 +20,19 @@ interpretação, ou **fundir numa só** e perder o resto.
 
 ![FCIR — o modelo numa imagem: interpretações rivais co-registadas sobre um substrato imutável, com adjudicação opcional no momento da leitura](pitch_assets/fcir_diagram.svg)
 
+O mesmo modelo, em texto (para leitores — humanos ou máquinas — que não renderizam SVG):
+
+```
+   Interp A (alice):  céu   gato  rua     ┐
+   Interp B (bob):    céu   gato  rua     ├ coexistem · co-registadas · 1ª classe
+   Interp C (carol):  céu   CÃO   rua     ┘ (discordam em e₂ — ambas mantidas)
+                       │     │     │
+   substrato:          e₁    e₂    e₃       imutável · guardado uma vez
+                             │
+       adjudicação no momento da leitura (OPCIONAL · não armazenada):
+          σ uma lente   ·   maioria → "gato"   ·   ⊥ manter a discordância
+```
+
 ## O que o torna diferente — e o que não torna
 
 Guardar um substrato uma vez e ler seletivo **já é SOTA maduro** — DICOM,

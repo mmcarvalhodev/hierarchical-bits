@@ -112,6 +112,32 @@ not a fence around what BH might later turn out to be. If the property proves
 broader or subtly different as it recurs in new contexts, the name should follow
 the idea, not constrain it.</p>
 <p><img alt="FCIR — the model in one picture: rival interpretations co-registered over one immutable substrate; adjudication is a read-time, optional choice (one lens / majority / keep the disagreement)" src="pitch_assets/fcir_diagram.svg"></p>
+<p>The same model, as text (for readers — human or machine — that don't render SVG):</p>
+<pre><code>   Interp A (alice):  sky   cat   road    ┐
+   Interp B (bob):    sky   cat   road    ├ coexist · co-registered · first-class
+   Interp C (carol):  sky   DOG   road    ┘ (they disagree at e₂ — both kept)
+                       │     │     │
+   substrate:          e₁    e₂    e₃       immutable · stored once
+                             │
+       read-time adjudication (OPTIONAL · not stored):
+          σ one lens   ·   majority → &quot;cat&quot;   ·   ⊥ keep the disagreement
+</code></pre>
+<h3 id="a-worked-example-3-annotators-one-image">A worked example — 3 annotators, one image</h3>
+<pre><code>Substrate:  image #042  — stored once (the pixels)
+Interp A (alice):  { object: &quot;cat&quot; }
+Interp B (bob):    { object: &quot;cat&quot; }
+Interp C (carol):  { object: &quot;dog&quot; }        ← disagreement, preserved
+
+Reads (all over the one stored image):
+  layer(&quot;carol&quot;)        → { object: &quot;dog&quot; }
+  item_views(&quot;#042&quot;)    → { alice:&quot;cat&quot;, bob:&quot;cat&quot;, carol:&quot;dog&quot; }   # the matrix
+  adjudicate(majority)  → &quot;cat&quot;      # optional, at read time; the layers stay
+  disagreements()       → [&quot;#042&quot;]   # found by reading labels only, not the image
+</code></pre>
+<p>What FCIR changes vs today: current pipelines collapse A, B, C into a single gold
+label and <strong>discard the fact that carol disagreed</strong>. FCIR keeps all three
+first-class and lets each consumer adjudicate — or not — at read time. This is
+exactly the <a href="bhanno/"><code>bhanno</code></a> prototype.</p>
 <h2 id="the-distinguishing-test">The distinguishing test</h2>
 <p>What separates a BH representation from an <code>ANCHOR</code> system (one that <em>also</em>
 stores the substrate once and reads it selectively)?</p>

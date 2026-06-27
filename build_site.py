@@ -300,6 +300,27 @@ def build_index() -> None:
                  'anotadores em ML — manter cada leitura de 1ª classe em vez de colapsar para '
                  'um único gold label ("aprender da discordância"). Ver a '
                  '<a href="conclusion.pt.html">Conclusão</a>.</p>')
+        _ascii_en = ("   Interp A (alice):  sky   cat   road     coexist · co-registered · first-class\n"
+                     "   Interp B (bob):    sky   cat   road\n"
+                     "   Interp C (carol):  sky   DOG   road     (disagree at e2 — both kept)\n"
+                     "                       |     |     |\n"
+                     "   substrate:          e1    e2    e3       immutable · stored once\n"
+                     "                             |\n"
+                     "       read-time adjudication (OPTIONAL · not stored):\n"
+                     '          one lens   ·   majority -> "cat"   ·   keep the disagreement')
+        _ascii_pt = ("   Interp A (alice):  céu   gato  rua      coexistem · co-registadas · 1ª classe\n"
+                     "   Interp B (bob):    céu   gato  rua\n"
+                     "   Interp C (carol):  céu   CÃO   rua      (discordam em e2 — ambas mantidas)\n"
+                     "                       |     |     |\n"
+                     "   substrato:          e1    e2    e3       imutável · guardado uma vez\n"
+                     "                             |\n"
+                     "       adjudicação no momento da leitura (OPCIONAL · não armazenada):\n"
+                     '          uma lente   ·   maioria -> "gato"   ·   manter a discordância')
+        ascii_d = ('<details style="margin:6px 0 2px"><summary style="cursor:pointer;color:#57606a;'
+                   'font-size:13px">' + ("Same model, as text" if lang == "en" else "O mesmo modelo, em texto")
+                   + '</summary><pre style="font-size:12px;line-height:1.4;overflow:auto;background:#f6f8fa;'
+                   'padding:10px;border-radius:6px">' + (_ascii_en if lang == "en" else _ascii_pt)
+                   + "</pre></details>")
         cite_label = "Cite this work" if lang == "en" else "Como citar"
         published_in = "published as a technical note on Zenodo" if lang == "en" \
             else "publicado como nota técnica no Zenodo"
@@ -318,6 +339,7 @@ def build_index() -> None:
   <a href="{DOI_URL}"><img class="doi-badge" src="{DOI_BADGE}" alt="DOI {DOI}"></a>
 </div>
 <p style="text-align:center; margin: 8px 0 4px;"><img src="pitch_assets/fcir_diagram.svg" alt="FCIR — the model in one picture" style="max-width:100%; border:0;"></p>
+{ascii_d}
 <h2 style="border:0">{L['cap_h']}</h2>
 <p>{L['cap_p']}</p>
 <table><thead><tr><th>{L['th'][0]}</th><th>{L['th'][1]}</th><th>{L['th'][2]}</th></tr></thead>

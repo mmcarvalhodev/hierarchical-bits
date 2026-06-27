@@ -43,6 +43,39 @@ the idea, not constrain it.
 
 ![FCIR — the model in one picture: rival interpretations co-registered over one immutable substrate; adjudication is a read-time, optional choice (one lens / majority / keep the disagreement)](pitch_assets/fcir_diagram.svg)
 
+The same model, as text (for readers — human or machine — that don't render SVG):
+
+```
+   Interp A (alice):  sky   cat   road    ┐
+   Interp B (bob):    sky   cat   road    ├ coexist · co-registered · first-class
+   Interp C (carol):  sky   DOG   road    ┘ (they disagree at e₂ — both kept)
+                       │     │     │
+   substrate:          e₁    e₂    e₃       immutable · stored once
+                             │
+       read-time adjudication (OPTIONAL · not stored):
+          σ one lens   ·   majority → "cat"   ·   ⊥ keep the disagreement
+```
+
+### A worked example — 3 annotators, one image
+
+```
+Substrate:  image #042  — stored once (the pixels)
+Interp A (alice):  { object: "cat" }
+Interp B (bob):    { object: "cat" }
+Interp C (carol):  { object: "dog" }        ← disagreement, preserved
+
+Reads (all over the one stored image):
+  layer("carol")        → { object: "dog" }
+  item_views("#042")    → { alice:"cat", bob:"cat", carol:"dog" }   # the matrix
+  adjudicate(majority)  → "cat"      # optional, at read time; the layers stay
+  disagreements()       → ["#042"]   # found by reading labels only, not the image
+```
+
+What FCIR changes vs today: current pipelines collapse A, B, C into a single gold
+label and **discard the fact that carol disagreed**. FCIR keeps all three
+first-class and lets each consumer adjudicate — or not — at read time. This is
+exactly the [`bhanno`](bhanno/) prototype.
+
 ## The distinguishing test
 
 What separates a BH representation from an `ANCHOR` system (one that *also*

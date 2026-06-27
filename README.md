@@ -20,6 +20,19 @@ interpretation, or **merge to one** and lose the rest.
 
 ![FCIR — the model in one picture: rival interpretations co-registered over one immutable substrate, with optional read-time adjudication](pitch_assets/fcir_diagram.svg)
 
+The same model, as text (for readers — human or machine — that don't render SVG):
+
+```
+   Interp A (alice):  sky   cat   road    ┐
+   Interp B (bob):    sky   cat   road    ├ coexist · co-registered · first-class
+   Interp C (carol):  sky   DOG   road    ┘ (they disagree at e₂ — both kept)
+                       │     │     │
+   substrate:          e₁    e₂    e₃       immutable · stored once
+                             │
+       read-time adjudication (OPTIONAL · not stored):
+          σ one lens   ·   majority → "cat"   ·   ⊥ keep the disagreement
+```
+
 ## What makes it different — and what doesn't
 
 Storing a substrate once and reading it selectively is **already mature SOTA** —
