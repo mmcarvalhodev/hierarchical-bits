@@ -61,7 +61,11 @@ Full confrontation — including where existing systems already win — is in
 
 | | |
 |---|---|
-| [`BH_MASTER.en.md`](BH_MASTER.en.md) | The serious study: 9 angles tested, declared method, honest baselines, public self-corrections, Related Work. |
+| [`BH_PRINCIPLE.md`](BH_PRINCIPLE.md) | **The concept** — FCIR (working name), the falsifiable test, and the honest confrontation with adjacent systems. |
+| [`BH_ALGEBRA.md`](BH_ALGEBRA.md) | **The formal model** — operators + laws; FCIR as `⊕ ⊥ α` (coexistence decoupled from adjudication). |
+| [`CONCLUSION.md`](CONCLUSION.md) | **Provisional conclusion** — the universal-paradigm hypothesis was not confirmed; what survived; response to external critique. |
+| [`applicability/`](applicability/) | The 20-domain sweep, scored and ranked (mostly ANCHOR; one BUILD). |
+| [`BH_MASTER.en.md`](BH_MASTER.en.md) | The measured study: 9 angles tested, declared method, honest baselines, public self-corrections, Related Work. |
 | [`BH_PITCH_APRESENTACAO.en.md`](BH_PITCH_APRESENTACAO.en.md) | Presentation pitch (7 slides). |
 | [`BH_PITCH_VISUAL.en.md`](BH_PITCH_VISUAL.en.md) + [`pitch_assets/en/`](pitch_assets/en/) | Pitch with 4 comparative charts. |
 | [`bhmem/`](bhmem/) | **Usable prototype** — agent memory as `.bh` (lib + tests, 35×/22×/9×/8×). |

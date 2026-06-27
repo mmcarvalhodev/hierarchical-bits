@@ -61,7 +61,11 @@ confrontação completa — incluindo onde os sistemas existentes ganham — est
 
 | | |
 |---|---|
-| [`BH_MASTER.md`](BH_MASTER.md) | O estudo sério: 9 ângulos testados, método declarado, baselines honestos, autocorreções públicas, Related Work. |
+| [`BH_PRINCIPLE.md`](BH_PRINCIPLE.md) | **O conceito** — FCIR (nome de trabalho), o teste falsificável, e a confrontação honesta com sistemas adjacentes. |
+| [`BH_ALGEBRA.md`](BH_ALGEBRA.md) | **O modelo formal** — operadores + leis; FCIR como `⊕ ⊥ α` (coexistência desacoplada da adjudicação). |
+| [`CONCLUSION.md`](CONCLUSION.md) | **Conclusão provisória** — a hipótese de paradigma universal não foi confirmada; o que sobreviveu; resposta à crítica externa. |
+| [`applicability/`](applicability/) | A varredura de 20 domínios, pontuada e ranqueada (maioria ANCHOR; um BUILD). |
+| [`BH_MASTER.md`](BH_MASTER.md) | O estudo medido: 9 ângulos testados, método declarado, baselines honestos, autocorreções públicas, Related Work. |
 | [`BH_PITCH_APRESENTACAO.md`](BH_PITCH_APRESENTACAO.md) | Pitch de apresentação (7 slides). |
 | [`BH_PITCH_VISUAL.md`](BH_PITCH_VISUAL.md) + [`pitch_assets/`](pitch_assets/) | Pitch com 4 gráficos comparativos. |
 | [`bhmem/`](bhmem/) | **Protótipo usável** — memória de agente em `.bh` (lib + testes, 35×/22×/9×/8×). |

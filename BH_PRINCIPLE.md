@@ -122,6 +122,12 @@ practice becomes a discussable concept — but it **stands or falls as a
 synthesis**, and an honest reader should judge it as one, not as a mechanism that
 did not exist before.
 
+A **formal algebra** of these operators — coexistence `⊕`, conflict `Δ`,
+projection `σ`, adjudication `α`, precedence `▷` — with FCIR stated precisely as
+`⊕ ⊥ α` (coexistence decoupled from adjudication), is in
+[`BH_ALGEBRA.md`](BH_ALGEBRA.md). It is what answers *"a model, or just a
+pattern?"* — as a specification, not yet a verified theory.
+
 ## The prototypes are instances, not the point
 
 Each `.bh` prototype is one instance of the principle — and they vary in how
