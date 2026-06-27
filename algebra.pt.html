@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BH — Álgebra das Interpretações [EN]</title>
+<style>
+:root { --accent: #2e7d32; --ink: #1b1f23; --muted: #57606a;
+        --line: #e1e4e8; --bg: #fff; --code-bg: #f6f8fa; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--ink); background: var(--bg);
+       font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+       Helvetica, Arial, sans-serif; }
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92);
+       backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.nav .in { max-width: 860px; margin: 0 auto; padding: 12px 24px; display: flex;
+           gap: 18px; align-items: center; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover, .nav a.active { color: var(--accent); }
+.nav .brand { color: var(--ink); font-weight: 700; margin-right: auto; }
+.nav .lang { border: 1px solid var(--accent); color: var(--accent);
+             padding: 3px 11px; border-radius: 6px; font-weight: 700; }
+.nav .lang:hover { background: var(--accent); color: #fff; }
+.nav .gh { border: 1px solid var(--line); padding: 4px 12px; border-radius: 6px; }
+main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; margin: 1.6em 0 .6em; }
+h1 { font-size: 2em; margin-top: .2em; }
+h2 { font-size: 1.5em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.2em; }
+a { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .4em 1.1em; border-left: 4px solid var(--accent);
+             background: #f3f8f4; border-radius: 0 6px 6px 0; }
+blockquote p { margin: .4em 0; }
+code { background: var(--code-bg); padding: .15em .4em; border-radius: 5px;
+       font: .88em/1.5 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+pre { background: var(--code-bg); padding: 16px; border-radius: 8px; overflow: auto;
+      border: 1px solid var(--line); }
+pre code { background: none; padding: 0; font-size: .85em; }
+table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: .95em;
+        display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+th { background: var(--code-bg); font-weight: 600; }
+tr:nth-child(even) td { background: #fafbfc; }
+img { max-width: 100%; height: auto; border: 1px solid var(--line);
+      border-radius: 8px; margin: 1em 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
+.foot { max-width: 860px; margin: 0 auto; padding: 24px; color: var(--muted);
+        font-size: 13px; border-top: 1px solid var(--line); }
+.hero { padding: 56px 0 8px; }
+.hero .lead { font-size: 1.5em; font-weight: 600; line-height: 1.4; }
+.hero .sub { color: var(--muted); font-size: 1.05em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+         gap: 16px; margin: 28px 0; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 20px;
+        text-decoration: none; color: var(--ink); transition: .15s; display: block; }
+.card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.06);
+              transform: translateY(-2px); }
+.card .t { font-weight: 700; font-size: 1.1em; color: var(--accent); }
+.card .d { color: var(--muted); font-size: .92em; margin-top: 6px; }
+.pill { display: inline-block; background: #f3f8f4; color: var(--accent);
+        border: 1px solid #cfe6d4; border-radius: 999px; padding: 2px 12px;
+        font-size: 13px; font-weight: 600; margin-bottom: 18px; }
+.nav .doi { border: 1px solid #1565c0; color: #1565c0; padding: 3px 10px;
+            border-radius: 6px; font-weight: 700; }
+.nav .doi:hover { background: #1565c0; color: #fff; }
+.doi-badge { border: 0 !important; border-radius: 0 !important; margin: 12px 0 0 !important; }
+.cite { margin-top: 34px; padding: 16px 18px; background: #f6f8fa;
+        border: 1px solid var(--line); border-radius: 10px; font-size: .92em; }
+.cite .h { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.cite code { display: block; white-space: pre-wrap; background: #fff; padding: 10px;
+             border-radius: 6px; border: 1px solid var(--line); margin-top: 8px; }
+</style>
+</head><body>
+<div class="nav"><div class="in"><a href="index.pt.html" class="brand">Bits Hierárquicos</a><a href="index.pt.html" class="">Início</a><a href="principle.pt.html" class="">Princípio</a><a href="algebra.pt.html" class="active">Álgebra</a><a href="master.pt.html" class="">Estudo</a><a href="pitch.pt.html" class="">Pitch</a><a href="visual.pt.html" class="">Pitch Visual</a><a href="conclusion.pt.html" class="">Conclusão</a><a class="lang" href="algebra.html" title="Switch language">EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.20821058" title="Zenodo DOI">DOI</a><a class="gh" href="https://github.com/mmcarvalhodev/hierarchical-bits">GitHub ↗</a></div></div>
+<main><h1 id="an-algebra-of-interpretations-fcir">An algebra of interpretations (FCIR)</h1>
+<blockquote>
+<p>Written in response to a fair external critique: <em>"without a formal algebra of
+how interpretations interact — composition, conflict, resolution, precedence —
+the proposal stays at the level of a design pattern, not a model."</em> This is the
+attempt to answer it. It is a <strong>specification</strong>, not a mechanized or proven
+theory (see <em>Honest limits</em>).</p>
+</blockquote>
+<p>The whole point of FCIR is that adjudication is <strong>deferred and optional</strong>. An
+algebra makes that precise: it says exactly which operators a representation must
+provide, and which law makes it FCIR rather than something adjacent.</p>
+<h2 id="objects">Objects</h2>
+<ul>
+<li><strong>Substrate</strong> <code>S</code> — an immutable set of addressable elements. <code>A</code> is its
+  address space (ids, offsets, node paths, coordinates). <code>S</code> is never written.</li>
+<li><strong>Value/claim space</strong> <code>V</code> — what an interpretation can assert about an address
+  (a label, a value, a mask, a relation, a fact).</li>
+<li><strong>Interpretation</strong> <code>I = (id, src, t, π)</code> — a first-class entity with identity
+  <code>id</code>, provenance <code>src</code>, time <code>t</code>, and a <strong>partial</strong> map <code>π : A ⇀ V</code> (defined
+  only on the addresses it speaks about).</li>
+<li><strong>Interpretation set</strong> <code>𝓘(S)</code> — the interpretations currently co-registered
+  to <code>S</code>. This set is the stored state.</li>
+</ul>
+<h2 id="operators">Operators</h2>
+<ol>
+<li>
+<p><strong>Coexistence</strong> <code>⊕</code> (the primary operator) — <code>𝓘 ⊕ I = 𝓘 ∪ {I}</code>.
+   Non-destructive union. Adding an interpretation never alters or removes
+   another. This is the operator most systems <em>lack</em> in non-destructive form.</p>
+</li>
+<li>
+<p><strong>Restriction</strong> <code>I|_{A'}</code> — <code>I</code> narrowed to addresses <code>A' ⊆ A</code>.</p>
+</li>
+<li>
+<p><strong>Conflict</strong> <code>Δ</code> (a query, not a mutation) — for two interpretations,
+   <code>Δ(I₁, I₂) = { a ∈ dom π₁ ∩ dom π₂ : π₁(a) ≠ π₂(a) }</code>;
+   over a set, <code>Δ(𝓘) = ⋃_{i&lt;j} Δ(Iᵢ, Iⱼ)</code>. Detects disagreement <strong>without
+   resolving it</strong>.</p>
+</li>
+<li>
+<p><strong>Projection / lens</strong> <code>σ</code> (read-only view) — <code>σ_φ(𝓘)</code> reads <code>S</code> through the
+   interpretations selected by filter <code>φ</code> (one <code>id</code>, one <code>src</code>, a time window).
+   <code>σ</code> returns a view; it does not change <code>𝓘</code>.</p>
+</li>
+<li>
+<p><strong>Adjudication</strong> <code>α_p</code> (read-time, <strong>optional</strong>, policy-parameterized) — at an
+   address <code>a</code>, <code>α_p(𝓘, a)</code> maps the multiset of claims <code>{ π_i(a) }</code> to a single
+   value <strong>or</strong> the explicit symbol <code>⊥</code> ("undecided"). Policies <code>p</code>:
+   <code>majority</code>, <code>priority(&lt;)</code> (a precedence order over sources), <code>latest</code>,
+   <code>trust(w)</code>, <code>unanimous</code> (returns <code>⊥</code> iff there is conflict). <code>α_p</code> is a
+   <strong>function over the stored set</strong>; it never mutates <code>𝓘</code>.</p>
+</li>
+<li>
+<p><strong>Precedence / override</strong> <code>▷</code> (derived view, non-commutative) — <code>I₁ ▷ I₂</code> is
+   the reading in which <code>I₁</code> wins where the two overlap. It is sugar for
+   <code>α_{priority(I₁ &lt; I₂)}</code>; both interpretations remain in <code>𝓘</code>.</p>
+</li>
+<li>
+<p><strong>Composition / stacking</strong> <code>∘</code> — an interpretation may take <strong>another
+   interpretation as its substrate</strong> (a review of annotator A's labels; a meta
+   layer). <code>I_meta : dom(I_A) ⇀ V</code>. This yields a finite stack; it is the least
+   developed operator (see limits).</p>
+</li>
+<li>
+<p><strong>Provenance</strong> <code>prov(I) = (src, t)</code> — carried by every interpretation,
+   preserved by <code>⊕</code>, <code>σ</code>, <code>α</code>, <code>▷</code>.</p>
+</li>
+</ol>
+<h2 id="laws-and-invariants">Laws and invariants</h2>
+<ul>
+<li><strong>(L1) Substrate immutability.</strong> No operator writes to <code>S</code>.</li>
+<li><strong>(L2) <code>⊕</code> is a commutative, associative monoid</strong> with identity <code>∅</code> (the empty
+  interpretation), and idempotent on identical <code>id</code> (set semantics).</li>
+<li><strong>(L3) Non-destruction.</strong> <code>σ</code>, <code>α</code>, <code>▷</code>, <code>Δ</code> are read-only: the stored set is
+  invariant under them. <code>view(𝓘) ⇒ 𝓘 unchanged</code>.</li>
+<li><strong>(L4) Conflict monotonicity.</strong> <code>Δ(𝓘 ⊕ I) ⊇ Δ(𝓘)</code> — adding interpretations can
+  only add conflicts, never silently erase them.</li>
+<li><strong>(L5) Adjudication separability.</strong> <code>α_p</code> is definable as a pure function of
+  <code>(𝓘, a, p)</code>. The stored set does <strong>not</strong> depend on <code>p</code>; changing the policy
+  changes only the view. This is the heart.</li>
+</ul>
+<h2 id="the-fcir-test-made-formal">The FCIR test, made formal</h2>
+<blockquote>
+<p>A representation <code>R</code> is <strong>FCIR</strong> iff its coexistence <code>⊕</code> is non-destructive
+(L3) <strong>and</strong> its adjudication <code>α</code> is separable (L5) — i.e. <strong><code>⊕</code> and <code>α</code> are
+independent operators</strong>.</p>
+</blockquote>
+<p>Equivalently: <em>you can add a contradicting interpretation and still read every
+prior one unchanged, and you can change how you resolve conflicts without
+rewriting anything.</em></p>
+<p>This turns the earlier prose test ("can two readings of the same element both
+remain until a reader chooses to adjudicate?") into an algebraic property, and it
+<strong>explains the prior-art verdicts as facts about coupling</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th><code>⊕</code> and <code>α</code></th>
+<th>FCIR?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RDF named graphs + PROV</strong></td>
+<td>decoupled: <code>⊕</code> = add a graph; <code>α</code> = query-time choice</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td><strong>Standoff annotation</strong></td>
+<td>decoupled: <code>⊕</code> = add a layer; <code>α</code> = optional gold/consensus pass</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>Git / branches</td>
+<td>coupled: a branch defers <code>α</code>, but the model drives toward <code>merge</code> (= <code>α</code> at integration time); unmerged = divergent copies</td>
+<td>no</td>
+</tr>
+<tr>
+<td>CRDTs</td>
+<td>coupled: <code>α</code> is <strong>baked into</strong> <code>⊕</code> (deterministic auto-convergence)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Event sourcing</td>
+<td>single truth: projections are <code>σ</code> over one history; no rival <code>α</code></td>
+<td>no</td>
+</tr>
+<tr>
+<td>Bitemporal / Datomic</td>
+<td>coupled to time: <code>α</code> = temporal order; supersession, not co-equal rivals</td>
+<td>partial</td>
+</tr>
+</tbody>
+</table>
+<p>So FCIR is not "we invented coexistence." It is: <strong>the property is exactly the
+decoupling of <code>⊕</code> from <code>α</code>, and that decoupling already exists in named graphs
+and standoff annotation — but is absent from the systems people reach for by
+default</strong> (Git, CRDTs, event sourcing, bitemporal stores).</p>
+<h2 id="what-the-algebra-buys">What the algebra buys</h2>
+<ul>
+<li>It moves FCIR from <em>pattern</em> to <em>model</em>: a named set of operators with laws and
+  a single defining property (L3 ∧ L5).</li>
+<li>It makes the test <strong>mechanically checkable</strong>: implement <code>⊕</code>, <code>Δ</code>, <code>α_p</code>; verify
+  L3 (views don't mutate) and L5 (policy is a read-time parameter).</li>
+<li>It <strong>predicts</strong>, rather than asserts, which systems qualify — and why.</li>
+</ul>
+<h2 id="honest-limits">Honest limits</h2>
+<ul>
+<li>This is a <strong>specification, not a verified theory.</strong> There are no consistency,
+  soundness, or complexity results here, and no mechanized proofs.</li>
+<li><strong>Composition (<code>∘</code>) is under-specified</strong> — interpretation-of-interpretation
+  needs a typing discipline to avoid paradox; only the finite-stack case is
+  sketched.</li>
+<li><strong>No implementation realizes the full algebra.</strong> <code>bhanno</code> implements a
+  fragment: <code>⊕</code>, <code>Δ</code>, and <code>α_majority</code> / <code>α_unanimous</code>. The other prototypes use
+  even less of it.</li>
+<li>The algebra <strong>does not establish novelty.</strong> Named graphs and standoff
+  annotation satisfy L3 ∧ L5 already; the algebra's contribution is to <em>state the
+  property precisely and cross-domain</em>, not to claim it is new.</li>
+</ul>
+<p>In short: this answers <em>"is there a model, or just a pattern?"</em> with <strong>"here is a
+model, written as a specification"</strong> — while being explicit that a specification
+is not yet a proven theory, and that the property it formalizes is, in two
+domains, already implemented.</p></main>
+<div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho · código sob Apache-2.0, documentos sob CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/hierarchical-bits">repositório</a></div>
+</body></html>

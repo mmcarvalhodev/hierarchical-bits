@@ -36,8 +36,26 @@ PAGES = {
         "en": ("BH_PITCH_VISUAL.en.md", "BH — Visual Pitch"),
         "pt": ("BH_PITCH_VISUAL.md", "BH — Pitch Visual"),
     },
+    "principle": {
+        "label": {"en": "Principle", "pt": "Princípio"},
+        "en": ("BH_PRINCIPLE.md", "BH — The Principle (FCIR)"),
+        "pt": ("BH_PRINCIPLE.md", "BH — O Princípio (FCIR) [EN]"),
+    },
+    "algebra": {
+        "label": {"en": "Algebra", "pt": "Álgebra"},
+        "en": ("BH_ALGEBRA.md", "BH — Algebra of Interpretations"),
+        "pt": ("BH_ALGEBRA.md", "BH — Álgebra das Interpretações [EN]"),
+    },
+    "conclusion": {
+        "label": {"en": "Conclusion", "pt": "Conclusão"},
+        "en": ("CONCLUSION.md", "BH — Conclusion (provisional)"),
+        "pt": ("CONCLUSION.md", "BH — Conclusão (provisória) [EN]"),
+    },
 }
-ORDER = ["master", "pitch", "visual"]
+# Concept first (Principle, Algebra), then the measured study, then pitch, then
+# the provisional conclusion. (Principle/Algebra/Conclusion are English-only for
+# now — the PT site links to the English source.)
+ORDER = ["principle", "algebra", "master", "pitch", "visual", "conclusion"]
 
 UI = {
     "en": {"home": "Home", "lang_other": "PT", "repo": "GitHub ↗",
@@ -185,7 +203,10 @@ LANDING = {
         "sub": ("The heart, in one line: <b>don't duplicate the world every time someone "
                 "disagrees with it.</b> Our sweep identified this — rival interpretations "
                 "kept as first-class entities — as the property that best distinguishes BH "
-                "from the approaches evaluated; we give it a working name: <b>FCIR</b>."),
+                "from the approaches evaluated; we give it a working name: <b>FCIR</b>. "
+                "Provisional conclusion: the universal-paradigm claim was <b>not confirmed</b>, "
+                "and FCIR already exists in RDF named graphs and standoff annotation — judge it "
+                "as a synthesis, not an invention."),
         "cap_h": "What makes it different — and what doesn't",
         "cap_p": ('Storing a substrate once and reading it selectively is <i>already</i> mature '
                   'SOTA (DICOM, COG, lakeFS, S-LoRA…) — BH does not claim that. A '
@@ -200,15 +221,19 @@ LANDING = {
             ("<code>bhtrace</code>", "traces", "competing lenses over one span tree"),
         ],
         "cards": [
-            ("master.html", "The Study (Master)",
-             "9 angles tested, declared method, honest baselines, public self-corrections, "
-             "Related Work. Zenodo-ready."),
-            ("pitch.html", "Pitch — Presentation",
-             "7 slides. Leads with FCIR and states its own limit."),
-            ("visual.html", "Pitch — Visual",
-             "4 comparative charts + the evidence panel (with the baseline labeled)."),
+            ("principle.html", "The Principle (FCIR)",
+             "What FCIR is, the falsifiable test, and the honest confrontation with Git, "
+             "RDF named graphs, CRDTs, bitemporal, standoff, event sourcing."),
+            ("algebra.html", "The Algebra",
+             "The formal model — operators and laws; FCIR as ⊕ ⊥ α (coexistence "
+             "decoupled from adjudication)."),
+            ("conclusion.html", "Conclusion (provisional)",
+             "The universal-paradigm hypothesis was not confirmed; what survived; the "
+             "response to external critique."),
+            ("master.html", "The Study (measured)",
+             "9 angles tested, declared method, honest baselines, public self-corrections."),
             (GH, "Code on GitHub",
-             "The bhmem prototype (agent memory as .bh), the terrains tested, and how to "
+             "Four .bh prototypes (illustrations, not competitors), the sweep, and how to "
              "reproduce everything."),
         ],
         "quote": "Don't duplicate the world every time someone disagrees with it.",
@@ -222,7 +247,10 @@ LANDING = {
         "sub": ('O coração, numa linha: <b>não duplicar o mundo toda vez que alguém discorda '
                 'dele.</b> A nossa varredura identificou isto — interpretações rivais mantidas '
                 'como entidades de 1ª classe — como a propriedade que melhor distingue o BH '
-                'das abordagens avaliadas; damos-lhe um nome de trabalho: <b>FCIR</b>.'),
+                'das abordagens avaliadas; damos-lhe um nome de trabalho: <b>FCIR</b>. '
+                'Conclusão provisória: a alegação de paradigma universal <b>não foi '
+                'confirmada</b>, e a FCIR já existe em RDF named graphs e standoff annotation '
+                '— julga-a como síntese, não como invenção.'),
         "cap_h": "O que o torna diferente — e o que não torna",
         "cap_p": ('Guardar um substrato uma vez e ler seletivo <i>já</i> é SOTA maduro '
                   '(DICOM, COG, lakeFS, S-LoRA…) — o BH não reivindica isso. Uma '
@@ -237,15 +265,19 @@ LANDING = {
             ("<code>bhtrace</code>", "traces", "lentes concorrentes sobre uma árvore de spans"),
         ],
         "cards": [
-            ("master.pt.html", "O Estudo (Master)",
-             "9 ângulos testados, método declarado, baselines honestos, autocorreções "
-             "públicas, Related Work. Pronto para Zenodo."),
-            ("pitch.pt.html", "Pitch — Apresentação",
-             "7 slides. Lidera com a FCIR e enuncia o seu próprio limite."),
-            ("visual.pt.html", "Pitch — Visual",
-             "4 gráficos comparativos + o painel de evidências (com baseline rotulado)."),
+            ("principle.pt.html", "O Princípio (FCIR)",
+             "O que é a FCIR, o teste falsificável, e a confrontação honesta com Git, "
+             "RDF named graphs, CRDTs, bitemporal, standoff, event sourcing."),
+            ("algebra.pt.html", "A Álgebra",
+             "O modelo formal — operadores e leis; FCIR como ⊕ ⊥ α (coexistência "
+             "desacoplada da adjudicação)."),
+            ("conclusion.pt.html", "Conclusão (provisória)",
+             "A hipótese de paradigma universal não foi confirmada; o que sobreviveu; a "
+             "resposta à crítica externa."),
+            ("master.pt.html", "O Estudo (medido)",
+             "9 ângulos testados, método declarado, baselines honestos, autocorreções públicas."),
             (GH, "Código no GitHub",
-             "O protótipo bhmem (memória de agente em .bh), os terrenos testados, e como "
+             "Quatro protótipos .bh (ilustrações, não competidores), a varredura, e como "
              "reproduzir tudo."),
         ],
         "quote": "Não duplicar o mundo toda vez que alguém discorda dele.",

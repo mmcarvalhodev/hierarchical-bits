@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BH — O Princípio (FCIR) [EN]</title>
+<style>
+:root { --accent: #2e7d32; --ink: #1b1f23; --muted: #57606a;
+        --line: #e1e4e8; --bg: #fff; --code-bg: #f6f8fa; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--ink); background: var(--bg);
+       font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+       Helvetica, Arial, sans-serif; }
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92);
+       backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.nav .in { max-width: 860px; margin: 0 auto; padding: 12px 24px; display: flex;
+           gap: 18px; align-items: center; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover, .nav a.active { color: var(--accent); }
+.nav .brand { color: var(--ink); font-weight: 700; margin-right: auto; }
+.nav .lang { border: 1px solid var(--accent); color: var(--accent);
+             padding: 3px 11px; border-radius: 6px; font-weight: 700; }
+.nav .lang:hover { background: var(--accent); color: #fff; }
+.nav .gh { border: 1px solid var(--line); padding: 4px 12px; border-radius: 6px; }
+main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; margin: 1.6em 0 .6em; }
+h1 { font-size: 2em; margin-top: .2em; }
+h2 { font-size: 1.5em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.2em; }
+a { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .4em 1.1em; border-left: 4px solid var(--accent);
+             background: #f3f8f4; border-radius: 0 6px 6px 0; }
+blockquote p { margin: .4em 0; }
+code { background: var(--code-bg); padding: .15em .4em; border-radius: 5px;
+       font: .88em/1.5 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+pre { background: var(--code-bg); padding: 16px; border-radius: 8px; overflow: auto;
+      border: 1px solid var(--line); }
+pre code { background: none; padding: 0; font-size: .85em; }
+table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: .95em;
+        display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+th { background: var(--code-bg); font-weight: 600; }
+tr:nth-child(even) td { background: #fafbfc; }
+img { max-width: 100%; height: auto; border: 1px solid var(--line);
+      border-radius: 8px; margin: 1em 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
+.foot { max-width: 860px; margin: 0 auto; padding: 24px; color: var(--muted);
+        font-size: 13px; border-top: 1px solid var(--line); }
+.hero { padding: 56px 0 8px; }
+.hero .lead { font-size: 1.5em; font-weight: 600; line-height: 1.4; }
+.hero .sub { color: var(--muted); font-size: 1.05em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+         gap: 16px; margin: 28px 0; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 20px;
+        text-decoration: none; color: var(--ink); transition: .15s; display: block; }
+.card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.06);
+              transform: translateY(-2px); }
+.card .t { font-weight: 700; font-size: 1.1em; color: var(--accent); }
+.card .d { color: var(--muted); font-size: .92em; margin-top: 6px; }
+.pill { display: inline-block; background: #f3f8f4; color: var(--accent);
+        border: 1px solid #cfe6d4; border-radius: 999px; padding: 2px 12px;
+        font-size: 13px; font-weight: 600; margin-bottom: 18px; }
+.nav .doi { border: 1px solid #1565c0; color: #1565c0; padding: 3px 10px;
+            border-radius: 6px; font-weight: 700; }
+.nav .doi:hover { background: #1565c0; color: #fff; }
+.doi-badge { border: 0 !important; border-radius: 0 !important; margin: 12px 0 0 !important; }
+.cite { margin-top: 34px; padding: 16px 18px; background: #f6f8fa;
+        border: 1px solid var(--line); border-radius: 10px; font-size: .92em; }
+.cite .h { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.cite code { display: block; white-space: pre-wrap; background: #fff; padding: 10px;
+             border-radius: 6px; border: 1px solid var(--line); margin-top: 8px; }
+</style>
+</head><body>
+<div class="nav"><div class="in"><a href="index.pt.html" class="brand">Bits Hierárquicos</a><a href="index.pt.html" class="">Início</a><a href="principle.pt.html" class="active">Princípio</a><a href="algebra.pt.html" class="">Álgebra</a><a href="master.pt.html" class="">Estudo</a><a href="pitch.pt.html" class="">Pitch</a><a href="visual.pt.html" class="">Pitch Visual</a><a href="conclusion.pt.html" class="">Conclusão</a><a class="lang" href="principle.html" title="Switch language">EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.20821058" title="Zenodo DOI">DOI</a><a class="gh" href="https://github.com/mmcarvalhodev/hierarchical-bits">GitHub ↗</a></div></div>
+<main><h1 id="hierarchical-bits-the-principle">Hierarchical Bits — The Principle</h1>
+<h2 id="first-class-interpretation-representation-fcir-a-working-name">First-Class Interpretation Representation (FCIR) — a working name</h2>
+<blockquote>
+<p><em>From a file format to a property of representation.</em></p>
+</blockquote>
+<p>The applicability sweep (<a href="applicability/"><code>applicability/</code></a>) established something
+uncomfortable and clarifying: the BH <strong>shape</strong> — a heavy substrate stored once,
+many co-registered layers, selective reads — is <strong>already mature SOTA</strong> in nearly
+every domain where it matters (DICOM, COG/STAC, lakeFS, CRAM/tabix, MAM, S-LoRA,
+named graphs). Selling BH as "substrate + overlays" is selling something the
+world already has.</p>
+<p>So the contribution is not the format. It is a <strong>principle</strong> the prototypes are
+instances of — and principles survive where formats age.</p>
+<h2 id="the-thesis">The thesis</h2>
+<blockquote>
+<p><strong>Hierarchical Bits is not a storage format. It is a way of representing data
+in which multiple concurrent — and possibly contradictory — interpretations
+share a single immutable substrate and persist as co-equal, first-class,
+individually addressable entities; adjudication between them is deferred to
+read-time and optional, never baked in and never destructive.</strong></p>
+</blockquote>
+<p>We give this property a <strong>working name</strong> — the <strong>First-Class Interpretation
+Representation (FCIR)</strong>: <em>a representation in which interpretations are
+first-class — persistent, addressable, co-equal — rather than temporary versions
+or conflicts to be resolved away.</em> "First-class" is the load-bearing word: it is
+what separates an interpretation with independent standing from one that exists
+only until it is merged into a single truth.</p>
+<p><strong>Why "working name."</strong> A property earns a permanent name after it has been
+observed, tested, and seen to recur across contexts — not at the moment it is
+first noticed. We are at the start of that sequence, not the end. So the honest
+statement is not <em>"BH's contribution is FCIR"</em> (a universal claim) but:</p>
+<blockquote>
+<p><strong>Our investigation identified FCIR as the property that best distinguishes BH
+from the approaches evaluated.</strong></p>
+</blockquote>
+<p>That is a description of a result, scoped to what we surveyed — not a law, and
+not a fence around what BH might later turn out to be. If the property proves
+broader or subtly different as it recurs in new contexts, the name should follow
+the idea, not constrain it.</p>
+<h2 id="the-distinguishing-test">The distinguishing test</h2>
+<p>What separates a BH representation from an <code>ANCHOR</code> system (one that <em>also</em>
+stores the substrate once and reads it selectively)?</p>
+<blockquote>
+<p>Given two interpretations that <strong>disagree</strong> about the same element of the
+substrate, can <strong>both remain</strong> — permanently, queryable, neither marked wrong —
+until a reader chooses, or declines, to adjudicate?</p>
+</blockquote>
+<ul>
+<li><strong><code>ANCHOR</code> systems answer no.</strong> They converge to one canonical truth: a
+  consensus mask, a gold label, a final coding decision, a merged model, a
+  resolved clash. Disagreement is a <em>problem to be resolved</em> — noise on the way
+  to ground truth.</li>
+<li><strong>BH answers yes.</strong> Disagreement is <em>data to be preserved</em>. The rival readings
+  coexist as permanent residents; the system never forces one to win by erasing
+  another.</li>
+</ul>
+<p>That single yes/no is the whole difference.</p>
+<h2 id="the-four-properties">The four properties</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>property</th>
+<th>shared with ANCHOR?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Immutable shared substrate</strong> — stored once, referenced by all layers</td>
+<td>yes — already SOTA</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Interpretations as first-class entities</strong> — persistent and addressable, not on-the-fly derived views nor mergeable annotations</td>
+<td>partly</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Coexistence of contradiction</strong> — rival readings of the <em>same</em> element are preserved together, as data</td>
+<td><strong>no — the differentiator</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Deferred, optional adjudication</strong> — at read time the reader picks a lens: one interpretation / the matrix / the majority / the disagreement</td>
+<td><strong>no — the differentiator</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Property 1 is the part that is already everywhere. Properties <strong>3 and 4</strong> are
+the part the sweep found <strong>still under-explored</strong>: most systems treat rival
+interpretations as a mess to clean up, not as co-equal entities to keep.</p>
+<h2 id="how-fcir-relates-to-adjacent-systems">How FCIR relates to adjacent systems</h2>
+<p>A blind read test (five fresh reviewers, three model tiers, README only)
+converged on one verdict: the <em>message</em> is clear, but the <em>novelty</em> is not yet
+defended — every reviewer independently named existing systems they believed
+already do this. They were right to. Here is the confrontation, under one rule:
+<strong>where a system already does exactly this, we say so — no makeup.</strong></p>
+<p>The FCIR property has five parts: (1) one shared, immutable substrate;
+(2) interpretations that may <strong>contradict</strong>; (3) kept as first-class,
+addressable, co-equal entities; (4) co-registered to the <strong>same substrate
+elements</strong>; (5) adjudication <strong>deferred and optional</strong> — neither reading marked
+wrong.</p>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th>satisfies all five?</th>
+<th>honest verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RDF named graphs + PROV</strong></td>
+<td>yes, for triples</td>
+<td><strong>already FCIR, in the triple/KG domain</strong></td>
+</tr>
+<tr>
+<td><strong>Standoff annotation</strong> (W3C Web Annotation, UIMA/GATE)</td>
+<td>yes, for text/media</td>
+<td><strong>already FCIR, in the annotation domain</strong></td>
+</tr>
+<tr>
+<td>Git / branches</td>
+<td>no</td>
+<td>defers adjudication, but is built for <em>eventual merge</em>; branches are divergent whole-tree states, not co-equal readings co-registered per element</td>
+</tr>
+<tr>
+<td>Bitemporal DBs / Datomic</td>
+<td>partial</td>
+<td>immutable + non-destructive history, but <em>temporal supersession of one truth</em>, not co-equal <strong>simultaneous</strong> rivals from different interpreters</td>
+</tr>
+<tr>
+<td>CRDTs</td>
+<td>no (opposite intent)</td>
+<td>designed to <strong>auto-converge</strong> to one state without coordination; preserving disagreement is exactly what they remove (multi-value registers keep concurrent values only until the app resolves)</td>
+</tr>
+<tr>
+<td>Event sourcing</td>
+<td>no</td>
+<td>immutable log + many <strong>derived</strong> projections, but the projections are different shapes of <em>one</em> truth, not contradictory rivals</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The admission, without makeup.</strong> Two of these — <strong>RDF named graphs with
+provenance</strong> and <strong>standoff annotation</strong> — already implement the FCIR property in
+full, each within its own domain. Our <code>bhanno</code> prototype <em>is</em> standoff
+annotation; it did not invent it. For triple-shaped knowledge, named graphs got
+there twenty years ago. <strong>So FCIR is not a new mechanism, and any claim that
+"nobody does this" is false.</strong></p>
+<p><strong>What is left, then — stated at its honest size.</strong> FCIR is an <strong>architectural
+synthesis and a name</strong>, not an invention:</p>
+<ol>
+<li>a <strong>single name</strong> for a property that today exists only in domain-specific
+   forms (named graphs for triples, standoff for text) and has <em>no shared term</em>
+   across images, BIM models, model weights, agent memory;</li>
+<li>a <strong>falsifiable test</strong> — <em>can two readings of the same element both remain,
+   neither marked wrong, until adjudication is chosen?</em> — that classifies any
+   system in one line;</li>
+<li>the <strong>observation</strong> that the property recurs across domains that do not talk
+   to each other, and that <strong>most</strong> systems in <strong>most</strong> domains do <em>not</em> have it
+   (they converge, merge, or supersede).</li>
+</ol>
+<p>That is a smaller claim than "a new representation paradigm." It may still be
+useful — naming a recurring property and giving it a test is how scattered
+practice becomes a discussable concept — but it <strong>stands or falls as a
+synthesis</strong>, and an honest reader should judge it as one, not as a mechanism that
+did not exist before.</p>
+<p>A <strong>formal algebra</strong> of these operators — coexistence <code>⊕</code>, conflict <code>Δ</code>,
+projection <code>σ</code>, adjudication <code>α</code>, precedence <code>▷</code> — with FCIR stated precisely as
+<code>⊕ ⊥ α</code> (coexistence decoupled from adjudication), is in
+<a href="BH_ALGEBRA.md"><code>BH_ALGEBRA.md</code></a>. It is what answers <em>"a model, or just a
+pattern?"</em> — as a specification, not yet a verified theory.</p>
+<h2 id="the-prototypes-are-instances-not-the-point">The prototypes are instances, not the point</h2>
+<p>Each <code>.bh</code> prototype is one instance of the principle — and they vary in how
+sharply they exercise properties 3–4:</p>
+<table>
+<thead>
+<tr>
+<th>instance</th>
+<th>substrate</th>
+<th>rival interpretations</th>
+<th>adjudication deferred?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="bhanno/"><code>bhanno</code></a></td>
+<td>a media item</td>
+<td>K annotators that disagree</td>
+<td><strong>yes</strong> — <code>adjudicate()</code> is optional; the purest instance</td>
+</tr>
+<tr>
+<td><a href="bhmem/"><code>bhmem</code></a></td>
+<td>the interaction log</td>
+<td>conflicting belief/fact versions over time</td>
+<td>partial — rival temporal versions kept</td>
+</tr>
+<tr>
+<td><a href="bhckpt/"><code>bhckpt</code></a></td>
+<td>base model weights</td>
+<td>adapters / quantizations (alternative, mostly <em>additive</em>)</td>
+<td>weak — interpretations rarely contradict</td>
+</tr>
+<tr>
+<td><a href="bhtrace/"><code>bhtrace</code></a></td>
+<td>the span tree</td>
+<td>competing analysis lenses / root-cause hypotheses</td>
+<td>weak — lenses coexist more than contradict</td>
+</tr>
+<tr>
+<td><code>bhbim</code> (candidate)</td>
+<td>the building object-graph</td>
+<td>rival discipline/version overlays + clashes</td>
+<td><strong>yes</strong> — the one BUILD domain in the sweep</td>
+</tr>
+</tbody>
+</table>
+<p>The closer an instance sits to "rival readings preserved without forced
+adjudication," the more it expresses what is <em>new</em> about BH versus the ANCHOR
+systems. <code>bhanno</code> (and the proposed <code>bhbim</code>) are the sharp instances; the others
+demonstrate the <em>generalization</em> but lean on the already-SOTA substrate-sharing.</p>
+<h2 id="honest-scope">Honest scope</h2>
+<ul>
+<li>This is the differential <strong>observed so far, in the 20 domains surveyed</strong> — not
+  a closed claim that properties 3–4 are BH's <em>only</em> possible value. New domains
+  may surface other under-served slices.</li>
+<li>The substrate-sharing economics (property 1) remain real and measured in the
+  prototypes — they are just <strong>not novel</strong>. BH's claim there is credibility by
+  analogy, not invention.</li>
+<li>"Without forced adjudication" is a <em>representation</em> stance, not a truth claim:
+  BH surfaces the contest and the majority; it does not decide who is right.
+  Resolving truth stays a modeling choice the reader makes, or declines.</li>
+</ul>
+<h2 id="why-this-is-the-advance">Why this is the advance</h2>
+<p>It moves the centre of gravity from the <strong>file</strong> to the <strong>model</strong>. If the thesis
+above can be stated precisely — and the distinguishing test makes it falsifiable:
+<em>does this system preserve contradicting interpretations without adjudication, or
+not?</em> — then the value of BH stops depending on any single prototype and starts
+depending on the clarity and generality of the principle. The prototypes become
+evidence; the principle becomes the contribution.</p>
+<hr>
+<p><em>Companion to <a href="BH_MASTER.md"><code>BH_MASTER.md</code></a> (the measured study) and
+<a href="applicability/"><code>applicability/</code></a> (the domain sweep). A Portuguese version can
+be produced on request.</em></p></main>
+<div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho · código sob Apache-2.0, documentos sob CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/hierarchical-bits">repositório</a></div>
+</body></html>

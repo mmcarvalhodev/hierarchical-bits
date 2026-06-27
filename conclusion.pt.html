@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BH — Conclusão (provisória) [EN]</title>
+<style>
+:root { --accent: #2e7d32; --ink: #1b1f23; --muted: #57606a;
+        --line: #e1e4e8; --bg: #fff; --code-bg: #f6f8fa; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--ink); background: var(--bg);
+       font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+       Helvetica, Arial, sans-serif; }
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92);
+       backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.nav .in { max-width: 860px; margin: 0 auto; padding: 12px 24px; display: flex;
+           gap: 18px; align-items: center; flex-wrap: wrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover, .nav a.active { color: var(--accent); }
+.nav .brand { color: var(--ink); font-weight: 700; margin-right: auto; }
+.nav .lang { border: 1px solid var(--accent); color: var(--accent);
+             padding: 3px 11px; border-radius: 6px; font-weight: 700; }
+.nav .lang:hover { background: var(--accent); color: #fff; }
+.nav .gh { border: 1px solid var(--line); padding: 4px 12px; border-radius: 6px; }
+main { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; margin: 1.6em 0 .6em; }
+h1 { font-size: 2em; margin-top: .2em; }
+h2 { font-size: 1.5em; padding-bottom: .3em; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.2em; }
+a { color: var(--accent); }
+blockquote { margin: 1em 0; padding: .4em 1.1em; border-left: 4px solid var(--accent);
+             background: #f3f8f4; border-radius: 0 6px 6px 0; }
+blockquote p { margin: .4em 0; }
+code { background: var(--code-bg); padding: .15em .4em; border-radius: 5px;
+       font: .88em/1.5 "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+pre { background: var(--code-bg); padding: 16px; border-radius: 8px; overflow: auto;
+      border: 1px solid var(--line); }
+pre code { background: none; padding: 0; font-size: .85em; }
+table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: .95em;
+        display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+th { background: var(--code-bg); font-weight: 600; }
+tr:nth-child(even) td { background: #fafbfc; }
+img { max-width: 100%; height: auto; border: 1px solid var(--line);
+      border-radius: 8px; margin: 1em 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
+.foot { max-width: 860px; margin: 0 auto; padding: 24px; color: var(--muted);
+        font-size: 13px; border-top: 1px solid var(--line); }
+.hero { padding: 56px 0 8px; }
+.hero .lead { font-size: 1.5em; font-weight: 600; line-height: 1.4; }
+.hero .sub { color: var(--muted); font-size: 1.05em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+         gap: 16px; margin: 28px 0; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 20px;
+        text-decoration: none; color: var(--ink); transition: .15s; display: block; }
+.card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,.06);
+              transform: translateY(-2px); }
+.card .t { font-weight: 700; font-size: 1.1em; color: var(--accent); }
+.card .d { color: var(--muted); font-size: .92em; margin-top: 6px; }
+.pill { display: inline-block; background: #f3f8f4; color: var(--accent);
+        border: 1px solid #cfe6d4; border-radius: 999px; padding: 2px 12px;
+        font-size: 13px; font-weight: 600; margin-bottom: 18px; }
+.nav .doi { border: 1px solid #1565c0; color: #1565c0; padding: 3px 10px;
+            border-radius: 6px; font-weight: 700; }
+.nav .doi:hover { background: #1565c0; color: #fff; }
+.doi-badge { border: 0 !important; border-radius: 0 !important; margin: 12px 0 0 !important; }
+.cite { margin-top: 34px; padding: 16px 18px; background: #f6f8fa;
+        border: 1px solid var(--line); border-radius: 10px; font-size: .92em; }
+.cite .h { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.cite code { display: block; white-space: pre-wrap; background: #fff; padding: 10px;
+             border-radius: 6px; border: 1px solid var(--line); margin-top: 8px; }
+</style>
+</head><body>
+<div class="nav"><div class="in"><a href="index.pt.html" class="brand">Bits Hierárquicos</a><a href="index.pt.html" class="">Início</a><a href="principle.pt.html" class="">Princípio</a><a href="algebra.pt.html" class="">Álgebra</a><a href="master.pt.html" class="">Estudo</a><a href="pitch.pt.html" class="">Pitch</a><a href="visual.pt.html" class="">Pitch Visual</a><a href="conclusion.pt.html" class="active">Conclusão</a><a class="lang" href="conclusion.html" title="Switch language">EN</a><a class="doi" href="https://doi.org/10.5281/zenodo.20821058" title="Zenodo DOI">DOI</a><a class="gh" href="https://github.com/mmcarvalhodev/hierarchical-bits">GitHub ↗</a></div></div>
+<main><h1 id="conclusion-provisional">Conclusion (provisional)</h1>
+<p>This project began as a strong hypothesis and is reported here at the honest size
+the evidence supports — no larger.</p>
+<p><strong>Initial hypothesis.</strong> BH introduces a new, general paradigm of representation.</p>
+<p><strong>Result of the investigation.</strong> That hypothesis was <strong>not confirmed</strong>. The
+principles it leaned on — a shared substrate stored once, and selective reading
+over it — already appear, in mature form, across many domains (DICOM, COG/STAC,
+lakeFS, CRAM/tabix, S-LoRA, MAM, …). As a <em>general paradigm</em>, BH is not novel.</p>
+<p><strong>What remained.</strong> A recurring property around the representation of
+<strong>concurrent, possibly contradictory interpretations</strong> over one shared substrate.
+It appears in some specific domains — notably <strong>RDF named graphs (+ provenance)</strong>
+and <strong>standoff annotation</strong> — but has no uniform, named treatment across them. We
+give it a working name: the <em>First-Class Interpretation Representation (FCIR)</em>.</p>
+<p><strong>Current status.</strong> There is <strong>not yet sufficient evidence</strong> that this property
+constitutes a <em>new</em> concept. The most defensible contribution at this moment is
+to treat it as a proposal of <strong>synthesis and classification</strong> — a cross-domain
+name plus a falsifiable test — subject to further validation. Where existing
+systems already implement it, this report says so (see
+<a href="BH_PRINCIPLE.md#how-fcir-relates-to-adjacent-systems"><code>BH_PRINCIPLE.md</code></a>).</p>
+<hr>
+<h2 id="the-conclusion-in-three-lines">The conclusion, in three lines</h2>
+<blockquote>
+<ul>
+<li>BH <strong>as a universal paradigm of representation</strong> was <strong>not confirmed</strong>;</li>
+<li>BH surfaced a <strong>recurring representation property</strong> worth study, whose
+  <strong>novelty is not established</strong>;</li>
+<li>the work remains valid <strong>as investigation and as method</strong>, independent of
+  whether the property turns out to be novel.</li>
+</ul>
+</blockquote>
+<p>This is a strong conclusion precisely because it is compatible with everything
+observed. It does not overstate what was found, and it does not discard the work
+done.</p>
+<h2 id="what-the-research-is-regardless">What the research is, regardless</h2>
+<p>A hypothesis was pursued, pressure-tested, and cut down to what survived:
+hypotheses tested, counter-examples sought, scope reduced when the evidence
+demanded it, contrary evidence incorporated rather than explained away. The
+honest win is <strong>the method</strong> as much as any single finding — and a measured trail
+with its boundaries and its prior art named in public.</p>
+<h2 id="responding-to-external-critique-deepseek-review-2026-06">Responding to external critique (DeepSeek review, 2026-06)</h2>
+<p>An external model-based review raised five points. Two were already addressed in
+this repo (immutability is not new → the prior-art confrontation in
+<a href="BH_PRINCIPLE.md#how-fcir-relates-to-adjacent-systems"><code>BH_PRINCIPLE.md</code></a>; the
+20-domain method → <a href="applicability/"><code>applicability/</code></a>). Three were fair and are
+addressed here:</p>
+<p><strong>(a) "No formal algebra → a pattern, not a model."</strong> Addressed in
+<a href="BH_ALGEBRA.md"><code>BH_ALGEBRA.md</code></a>: the operators (<code>⊕</code> coexistence, <code>Δ</code> conflict,
+<code>σ</code> projection, <code>α</code> adjudication, <code>▷</code> precedence, <code>∘</code> composition), the laws, and
+<strong>FCIR stated formally as the decoupling of coexistence from adjudication</strong>
+(<code>⊕ ⊥ α</code>). It is a specification, not yet a verified theory.</p>
+<p><strong>(b) Trade-offs (the costs, honestly).</strong> The family is not free:
+immutability → monotonic storage growth, needing compaction/GC and
+content-addressing; co-registration → interpretations must address substrate
+elements stably, so substrate re-addressing breaks layers (the standoff
+"offset-drift" problem); preserving conflict → read-time adjudication is
+<code>O(layers)</code> per address. None of these are solved here — they are the known costs
+of the immutable-substrate family.</p>
+<p><strong>(c) Comparison to real tools, not naive baselines.</strong> The prototype numbers are
+vs a <em>naive flat store</em>, not vs SOTA. Said plainly: <strong>against the real tools the
+prototypes do not win.</strong> <code>bhanno</code> is standoff annotation (brat / Label Studio /
+Web Annotation do it better and at scale); <code>bhckpt</code>'s selective load is what
+<code>safetensors</code> / S-LoRA already ship; <code>bhmem</code> sits below Mem0 / Zep. The
+prototypes are <strong>illustrations of the property, not competitors</strong>; the claim is
+the property + the test, not the implementations.</p>
+<p><strong>(d) Where it would actually help.</strong> The most defensible use case is
+<strong>preserving and learning from disagreement</strong> — <em>human label variation</em> in ML.
+Pipelines today collapse many annotators into one gold label and discard the
+disagreement, which a growing literature argues is real signal (ambiguity,
+subjectivity, uncertainty) being thrown away. FCIR's narrow but concrete value:
+keep every annotator's reading first-class and adjudicate <strong>at read-time, per
+consumer</strong> (one model trains on majority, another on the full distribution, an
+auditor inspects the conflict) — without forking the dataset. The usual gap is
+not storage (standoff already stores layers) but the <em>pipeline</em> collapsing them
+to gold. That gap, not the bytes, is the opportunity.</p>
+<p>This does not make FCIR novel (see the prior-art confrontation). It makes the
+critique part of the record.</p>
+<h2 id="paths-from-here-open">Paths from here (open)</h2>
+<p>None of these requires the original hypothesis to have been right:</p>
+<ul>
+<li><strong>Conclude</strong> — report the investigation as-is; a finished inquiry.</li>
+<li><strong>Reposition</strong> — treat BH as a <em>lens for studying representation properties</em>,
+  not a format or an invention.</li>
+<li><strong>Use it</strong> — take the parts that work and put them in software; not every
+  concept needs to become a paper.</li>
+</ul>
+<hr>
+<p><em>Companion to <a href="BH_MASTER.md"><code>BH_MASTER.md</code></a> (the measured study),
+<a href="applicability/"><code>applicability/</code></a> (the domain sweep) and
+<a href="BH_PRINCIPLE.md"><code>BH_PRINCIPLE.md</code></a> (the FCIR confrontation). Provisional — it
+should be revised if stronger evidence, for or against, appears.</em></p></main>
+<div class="foot">Bits Hierárquicos · © 2025–2026 Márcio M. Carvalho · código sob Apache-2.0, documentos sob CC BY 4.0 · <a href="https://github.com/mmcarvalhodev/hierarchical-bits">repositório</a></div>
+</body></html>
