@@ -16,7 +16,7 @@ GREEN, BLUE, GRAY = "#2e7d32", "#1565c0", "#90a4ae"
 
 STR = {
     "pt": {
-        "sup": "As medições, uma a uma — onde o BH foi superior (e contra qual baseline)",
+        "sup": "Medições do estudo (codec / substrato) — contra o baseline rotulado",
         "p1_title": "Dado gerado por regra → programa", "p1_fam": ["anéis", "ondas", "xadrez", "grad."],
         "p1_y": "× menor que WebP", "p1_note": "vs WebP (SOTA) · reconstrói exato",
         "p2_title": "Conteúdo casado (gradiente)", "p2_q": ["50,2 dB", "57,9 dB"],
@@ -33,7 +33,7 @@ STR = {
         "p6_note": "mecanismo já-SOTA (OLAP/Merkle):\ncredibilidade, NÃO novidade",
     },
     "en": {
-        "sup": "The measurements, one by one — where BH was superior (and against which baseline)",
+        "sup": "Study measurements (codec / substrate) — against the labeled baseline",
         "p1_title": "Rule-generated data → program", "p1_fam": ["rings", "waves", "checker", "grad."],
         "p1_y": "× smaller than WebP", "p1_note": "vs WebP (SOTA) · reconstructs exact",
         "p2_title": "Matched content (gradient)", "p2_q": ["50.2 dB", "57.9 dB"],

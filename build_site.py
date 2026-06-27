@@ -292,6 +292,14 @@ def build_index() -> None:
         cards = "".join(
             f'<a class="card" href="{href}"><div class="t">{t} →</div>'
             f'<div class="d">{d}</div></a>' for href, t, d in L["cards"])
+        helps = ('<p><b>Where it helps most (honestly):</b> preserving annotator '
+                 'disagreement in ML — keeping every reading first-class instead of '
+                 'collapsing to one gold label ("learning from disagreement"). See the '
+                 '<a href="conclusion.html">Conclusion</a>.</p>') if lang == "en" else (
+                 '<p><b>Onde ajuda mais (honestamente):</b> preservar a discordância entre '
+                 'anotadores em ML — manter cada leitura de 1ª classe em vez de colapsar para '
+                 'um único gold label ("aprender da discordância"). Ver a '
+                 '<a href="conclusion.pt.html">Conclusão</a>.</p>')
         cite_label = "Cite this work" if lang == "en" else "Como citar"
         published_in = "published as a technical note on Zenodo" if lang == "en" \
             else "publicado como nota técnica no Zenodo"
@@ -314,6 +322,7 @@ def build_index() -> None:
 <p>{L['cap_p']}</p>
 <table><thead><tr><th>{L['th'][0]}</th><th>{L['th'][1]}</th><th>{L['th'][2]}</th></tr></thead>
 <tbody>{rows}</tbody></table>
+{helps}
 <div class="cards">{cards}</div>
 <blockquote>{L['quote']}</blockquote>
 {cite_html}

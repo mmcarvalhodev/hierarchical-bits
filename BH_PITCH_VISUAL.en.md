@@ -18,7 +18,7 @@ read-time, optional choice.
 > sweep found) already mature SOTA. The diagram above is the part that
 > distinguishes BH; treat the charts as supporting evidence, not the headline.
 
-## 1. The union nobody sells
+## 1. Capability matrix — substrate-sharing (already SOTA)
 
 Every format today covers only one piece. `.bh` is the only one that unites all
 the capabilities in a single structure.
@@ -35,7 +35,7 @@ AST/JSON   → explicit structure, but not compact and doesn't orchestrate
 
 ---
 
-## 2. The same file: smaller AND navigable
+## 2. Substrate-sharing economics — real, and already SOTA
 
 It's not "either compact or navigable". It's both, measured against WebP on a
 structured document.

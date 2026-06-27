@@ -17,7 +17,7 @@ escolha opcional no momento da leitura.
 > varredura mostrou) já SOTA maduro. O diagrama acima é a parte que distingue o
 > BH; trata os gráficos como evidência de apoio, não como o destaque.
 
-## 1. A união que ninguém vende
+## 1. Matriz de capacidades — substrato-partilhado (já SOTA)
 
 Cada formato de hoje cobre só um pedaço. O `.bh` é o único que une todas as
 capacidades numa estrutura só.
@@ -34,7 +34,7 @@ AST/JSON   → estrutura explícita, mas não compacto nem orquestra
 
 ---
 
-## 2. O mesmo arquivo: menor E navegável
+## 2. Economia de substrato-partilhado — real, e já SOTA
 
 Não é "ou compacto ou navegável". É os dois, medido contra o WebP num
 documento estruturado.
