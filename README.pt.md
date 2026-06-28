@@ -37,7 +37,7 @@ O mesmo modelo, em texto (para leitores — humanos ou máquinas — que não re
 
 1. **Este README** — a ideia num diagrama (acima).
 2. **[O Princípio](BH_PRINCIPLE.md)** — o que é a FCIR, o teste falsificável, e a confrontação honesta com os sistemas que já o fazem.
-3. **O mapa honesto** — **[applicability/](applicability/)** (onde serve / onde já é SOTA) · **[o re-score 3-4](applicability/RESCORE_FCIR.md)** (a lente certa) · **[DIRECTIONS_EVAL](DIRECTIONS_EVAL.md)** (becos sem saída testados).
+3. **O mapa honesto** — **[applicability/](applicability/)** (onde serve / onde já é SOTA) · **[o re-score 3-4](applicability/RESCORE_FCIR.md)** (a lente certa) · **[DIRECTIONS_EVAL](DIRECTIONS_EVAL.md)** (becos sem saída testados) · **[teste de discordância-ML](directions/disagreement_ml/RESULTS_DISAGREEMENT_ML.md)** (o único resultado empírico positivo).
 4. **[A Álgebra](BH_ALGEBRA.md)** (modelo formal) · **[Conclusão](CONCLUSION.md)** (veredito provisório — hipótese *não* confirmada).
 5. **Protótipos (medidos):** [bhmem](bhmem/) · [bhtrace](bhtrace/) · [bhckpt](bhckpt/) · [bhanno](bhanno/) · [bhmemx](bhmemx/) (o da FCIR-3-4). Estudo completo: [BH_MASTER.md](BH_MASTER.md) · [Zenodo (DOI)](https://doi.org/10.5281/zenodo.20821058).
 
@@ -89,6 +89,7 @@ confrontação completa — incluindo onde os sistemas existentes ganham — est
 | [`CONCLUSION.md`](CONCLUSION.md) | **Conclusão provisória** — a hipótese de paradigma universal não foi confirmada; o que sobreviveu; resposta à crítica externa. |
 | [`applicability/`](applicability/) | A varredura de 20 domínios, pontuada e ranqueada (maioria ANCHOR; um BUILD). |
 | [`DIRECTIONS_EVAL.md`](DIRECTIONS_EVAL.md) | **Fronteiras exploradas (becos sem saída validados)** — 3 direções propostas, testadas e descartadas; registo honesto do limite de abrangência. |
+| [`directions/disagreement_ml/`](directions/disagreement_ml/RESULTS_DISAGREEMENT_ML.md) | **Teste empírico (positivo, com escopo)** — no ChaosNLI, *não colapsar na escrita* (rótulos soft) prevê os juízos humanos ~7% melhor que o rótulo-ouro e bate o smoothing genérico; o ganho cresce com a discordância. Evidência de que a disciplina carrega sinal preditivo. *(documento em EN)* |
 | [`BH_MASTER.md`](BH_MASTER.md) | O estudo medido: 9 ângulos testados, método declarado, baselines honestos, autocorreções públicas, Related Work. |
 | [`BH_PITCH_APRESENTACAO.md`](BH_PITCH_APRESENTACAO.md) | Pitch de apresentação (7 slides). |
 | [`BH_PITCH_VISUAL.md`](BH_PITCH_VISUAL.md) + [`pitch_assets/`](pitch_assets/) | Pitch com 4 gráficos comparativos. |

@@ -37,7 +37,7 @@ The same model, as text (for readers — human or machine — that don't render 
 
 1. **This README** — the idea in one diagram (above).
 2. **[The Principle](BH_PRINCIPLE.md)** — what FCIR is, the falsifiable test, and an honest confrontation with the systems that already do it.
-3. **The honest map** — **[applicability/](applicability/)** (where it fits / where it's already SOTA) · **[the 3-4 re-score](applicability/RESCORE_FCIR.md)** (the right lens) · **[DIRECTIONS_EVAL](DIRECTIONS_EVAL.md)** (tested dead-ends).
+3. **The honest map** — **[applicability/](applicability/)** (where it fits / where it's already SOTA) · **[the 3-4 re-score](applicability/RESCORE_FCIR.md)** (the right lens) · **[DIRECTIONS_EVAL](DIRECTIONS_EVAL.md)** (tested dead-ends) · **[disagreement-ML test](directions/disagreement_ml/RESULTS_DISAGREEMENT_ML.md)** (the one positive empirical result).
 4. **[The Algebra](BH_ALGEBRA.md)** (formal model) · **[Conclusion](CONCLUSION.md)** (provisional verdict — hypothesis *not* confirmed).
 5. **Prototypes (measured):** [bhmem](bhmem/) · [bhtrace](bhtrace/) · [bhckpt](bhckpt/) · [bhanno](bhanno/) · [bhmemx](bhmemx/) (the FCIR-3-4 one). Full study: [BH_MASTER.en.md](BH_MASTER.en.md) · [Zenodo (DOI)](https://doi.org/10.5281/zenodo.20821058).
 
@@ -89,6 +89,7 @@ Full confrontation — including where existing systems already win — is in
 | [`CONCLUSION.md`](CONCLUSION.md) | **Provisional conclusion** — the universal-paradigm hypothesis was not confirmed; what survived; response to external critique. |
 | [`applicability/`](applicability/) | The 20-domain sweep, scored and ranked (mostly ANCHOR; one BUILD). |
 | [`DIRECTIONS_EVAL.md`](DIRECTIONS_EVAL.md) | **Explored frontiers (validated dead-ends)** — 3 proposed directions tested and discarded; honest record of the scope limit. |
+| [`directions/disagreement_ml/`](directions/disagreement_ml/RESULTS_DISAGREEMENT_ML.md) | **Empirical test (positive, scoped)** — on ChaosNLI, *not collapsing on write* (soft labels) predicts human judgments ~7% better than the gold label and beats generic smoothing; the gain grows with disagreement. Evidence the discipline carries predictive signal. |
 | [`BH_MASTER.en.md`](BH_MASTER.en.md) | The measured study: 9 angles tested, declared method, honest baselines, public self-corrections, Related Work. |
 | [`BH_PITCH_APRESENTACAO.en.md`](BH_PITCH_APRESENTACAO.en.md) | Presentation pitch (7 slides). |
 | [`BH_PITCH_VISUAL.en.md`](BH_PITCH_VISUAL.en.md) + [`pitch_assets/en/`](pitch_assets/en/) | Pitch with 4 comparative charts. |

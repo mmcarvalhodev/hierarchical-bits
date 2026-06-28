@@ -178,6 +178,19 @@ contribution, is that the prevailing practice **destroys** that table by default
 and FCIR names, tests, and models the alternative. We claim the discipline; we do
 not claim the impossibility.
 
+**The discipline carries measurable signal — not only provenance.** Tested on
+ChaosNLI (3113 disagreement-rich NLI examples, ~100 human annotations each;
+[full result](directions/disagreement_ml/RESULTS_DISAGREEMENT_ML.md)): training on
+the *full human label distribution* ("don't collapse on write") predicts human
+judgments ~7% better (JSD) than collapsing to a gold label, **and beats generic
+label smoothing** — so the gain is the *shape* of the disagreement, not mere
+regularization. The effect grows monotonically with how contested the example is,
+and costs no accuracy. So "don't collapse" is not only auditable; on this
+benchmark it is also predictively better. (Scoped honestly: modest effect; proves
+the *signal* has value, not that FCIR-the-mechanism is *necessary* — soft-label
+learning is known; what is new is tying it to "don't collapse on write" and
+showing it beats the smoothing control.)
+
 A **formal algebra** of these operators — coexistence `⊕`, conflict `Δ`,
 projection `σ`, adjudication `α`, precedence `▷` — with FCIR stated precisely as
 `⊕ ⊥ α` (coexistence decoupled from adjudication), is in
@@ -228,6 +241,13 @@ demonstrate the *generalization* but lean on the already-SOTA substrate-sharing.
   2.8×, then flat): once the per-agent layers dominate the shared substrate, the
   "stored once" economy stops growing. The case for FCIR at high K is the
   discipline and the single model — **not** an unbounded storage advantage.
+  The sharper high-K argument is *workflow*, not bytes (unmeasured here, but
+  worth naming): in an `ANCHOR` system the cost of adjudication scales with K in
+  **human** time (committee, majority rule, review UI) — O(K) per resolved value.
+  FCIR does not remove that cost; it *defers* it to whoever actually needs a
+  resolved value. With 100 agents but only 3 consumers that need a scalar, you
+  pay adjudication 3 times, not 100. That is the real economic case for "don't
+  collapse on write" at scale.
 
 ## Why this is the advance
 
